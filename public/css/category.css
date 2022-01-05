@@ -1,0 +1,17 @@
+.userpgcategory li{
+    padding: 6px;
+    border: none ;
+    border-bottom: 1px solid #ececec !important;
+    margin-bottom: 0 !important;
+    position: static;
+    /* float: left; */
+    list-style-type: none;
+}
+
+.userpgcategory li a, .userpgcategory li span{
+    text-decoration:none;
+    color: black;
+
+    /* padding: 2px ; */
+    
+}
