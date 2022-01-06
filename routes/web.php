@@ -33,6 +33,8 @@ Route::get('/postads',function(){
 
 Route::get('/viewAds/{maincategory}/{id}',[UserController::class,"viewAds"]);
 
+Route::get('/viewAds/{maincategory}/{id}',[UserController::class,"categories"]);
+
 Route::get('/postbooks', function (){
     return view('users.postbooks');
 });

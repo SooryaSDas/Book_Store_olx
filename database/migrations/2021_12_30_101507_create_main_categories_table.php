@@ -20,6 +20,7 @@ class CreateMainCategoriesTable extends Migration
         });
 
         DB::table('main_categories')->insert([     ['maincategory' => 'Classics'],     ['maincategory' => 'Comic Book or Graphic Novel'],  ['maincategory' => 'Horror'],     ['maincategory' => 'Detective and Mystery'],  ['maincategory' => 'Essays'],     ['maincategory' => 'Historical Fiction'],  ['maincategory' => 'Science Fiction'],     ['maincategory' => 'Biographies and Autobiographies'],  ['maincategory' => 'Short Stories'],     ['maincategory' => 'Action and Adventure'] ]);
+    
     }
 
     /**
