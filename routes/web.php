@@ -27,11 +27,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard',[MainCategorycontroller::class,"index"])->middleware(['auth'])->name('dashboard');
 
-Route::get('/postads',function(){
-    return view('users.postad');
-});
+Route::get('/postads',[UserController::class,"index"]);
 
-Route::get('/viewAds/{maincategory}/{id}',[UserController::class,"viewAds"]);
+// Route::get('/viewAds/{maincategory}/{id}',[UserController::class,"viewAds"]);
 
 Route::get('/viewAds/{maincategory}/{id}',[UserController::class,"categories"]);
 

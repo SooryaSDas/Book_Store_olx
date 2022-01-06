@@ -5,17 +5,6 @@
         </h2>
     </x-slot>
 
-    <!-- <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-3">
@@ -26,18 +15,9 @@
                     </div>
                     <div class="card-body">
                         <ul class="userpgcategory fa-ul" id="category">
-
-                        <li><a href="">Classics</a></li>
-                            <li><a href="{{url('/postbooks')}}"> Comic Book or Graphic Novel</a></li>
-                            <li><a href="{{url('/postbooks')}}">Horror</a></li>
-                            <li><a href="{{url('/postbooks')}}">Detective and Mystery</a></li>
-                            <li><a href="{{url('/postbooks')}}"> Essays</a></li>
-                            <li><a href="{{url('/postbooks')}}">Historical Fiction</a></li>
-                            <li><a href="{{url('/postbooks')}}"> Science Fiction</a></li>
-                            <li><a href="{{url('/postbooks')}}"> Biographies and Autobiographies</a></li>
-                            <li><a href="{{url('/postbooks')}}"> Short Stories</a></li>
-                            <li><a href="{{url('/postbooks')}}"> Action and Adventure</a></li>
-                            
+                            @foreach($articles as $article)
+                                <li><a href="{{url('/viewAds/'.$article->maincategory.'/'.$article->id)}}">{{$article->maincategory}}</a></li>
+                            @endforeach    
                         </ul>
                     </div>
                 </div>

@@ -68,7 +68,7 @@
                                                 <div class="form-group">
                                                     <input type="hidden" name="maincategoryid" value={{Request::segment(3) }}>
                                                     <label> <strong>Select Category</strong></label>
-                                                    <select class="form-control" name="maincategoryid" required>
+                                                    <select class="form-control" name="subcategoryid" required>
                                                         <option value="">Select</option>
                                                     </select>
                                                 </div>
