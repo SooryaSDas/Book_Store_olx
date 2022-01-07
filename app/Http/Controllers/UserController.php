@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
 use App\Models\MainCategory;
 use App\Models\SubCategory;
+use App\Models\Advertisement;
+
 use DB;
 
 class UserController extends Controller
@@ -134,6 +139,65 @@ class UserController extends Controller
             return view('users.publishedads.actionandadventure',["articles" =>$articles,"subcategories"=>$subcategories]);
         }
     
-     }
+    }
+
+    public function actionadventure(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+
+
+
+            // for printing - checking data coming or not
+            // $data = array(
+            //     'maincategoryid' => $ads->maincategoryid,
+            //     'subcategoryid' =>  $ads->subcategoryid,
+            //     'bookname' =>  $ads->bookname,
+            //     'authorname' => $ads->authorname,
+            //     'publisher' =>  $ads->publisher,
+            //     'price' =>  $ads->price,
+            //     'name' =>  $ads->name,
+            //     'mobileno' =>  $ads->mobileno,
+            //     'email' => $ads->email,
+            //     'state' =>  $ads->state,
+            //     'photos' =>  $ads->photos,
+            // );
+
+            //     echo '<pre>';
+            //     print_r($data);
+            //     echo '</pre>';
+        }
+    }
 
 }

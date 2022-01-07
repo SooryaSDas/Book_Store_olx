@@ -37,4 +37,6 @@ Route::get('/postbooks', function (){
     return view('users.postbooks');
 });
 
+Route::post('/actionadventure',[UserController::class,"actionadventure"]);
+
 require __DIR__.'/auth.php';

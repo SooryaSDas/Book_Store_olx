@@ -47,7 +47,7 @@
                         </ul>
                         <div id="mytabcontent" class="tabcontent">
                             <div id="home">
-                            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{url('/postbookads')}}" style="padding-left:20px">
+                            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{url('/detective')}}" style="padding-left:20px">
 
 {{csrf_field()}}
 
@@ -58,9 +58,10 @@
                 <input type="hidden" name="maincategoryid" value={{Request::segment(3) }}>
                 <label> <strong>Select Category</strong></label>
                 <select class="form-control" name="subcategoryid" required>
+                    <option value="">Select</option>
                     @if(count($subcategories)>0)
                         @foreach($subcategories as $subcategory)
-                        <option value="{{$subcategory->subcategory}}">{{$subcategory->subcategory}}</option>
+                        <option value={{$subcategory->id}}>{{$subcategory->subcategory}}</option>
                         @endforeach
 
                     @else
