@@ -163,7 +163,7 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label><strong>Photos (Max 4)</strong></label>
-                <input type="file" class="form-control" name="photos[]" multipart="true" required>
+                <input type="file" class="form-control" name="photos[]" multipart="true" multiple required>
             </div>
         </div>
         <label></label>

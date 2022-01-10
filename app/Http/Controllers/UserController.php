@@ -176,8 +176,7 @@ class UserController extends Controller
             $ads->state = $request->input('state');
             $ads->photos =  $image;
             $ads->save();
-
-
+            return redirect('/dashboard');
 
             // for printing - checking data coming or not
             // $data = array(
@@ -200,4 +199,361 @@ class UserController extends Controller
         }
     }
 
+
+    public function classics(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function biographies(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function commic(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function detective(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function essays(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function historical(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function horror(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function sciencefiction(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function shortstories(Request $request){
+        $this->validate($request,[
+            'photos.*' => 'image|mimes:jpg, png, jpeg, gif, svg|max:2048'
+        ]);
+        $ads = new Advertisement;
+        $images = $request->file('photos');
+        $count = 0;
+        if($request->file('photos')){
+            foreach($images as $item){
+                if($count < 4){
+                    $var = date_create();
+                    $date = date_format($var, 'Ymd');
+                    $imageName = $date.'-'.$item->getClientOriginalName();
+                    $item->move(public_path().'/uploads/',$imageName);
+                    $url = URL::to("/").'/uploads/'.$imageName;
+                    $arr[]=$url;
+                    $count++;
+                }
+            }
+
+            $image = implode(",", $arr);
+            $ads->maincategoryid = $request->input('maincategoryid');
+            $ads->subcategoryid = $request->input('subcategoryid');
+            $ads->bookname = $request->input('bookname');
+            $ads->authorname = $request->input('authorname');
+
+            $ads->publisher = $request->input('publisher');
+            $ads->price = $request->input('price');
+            $ads->name = $request->input('name');
+            $ads->mobileno = $request->input('mobileno');
+
+            $ads->email = $request->input('email');
+            $ads->state = $request->input('state');
+            $ads->photos =  $image;
+            $ads->save();
+            return redirect('/dashboard');
+        }
+    }
+
+    public function getads(){
+        echo "hello";
+       
+    }
 }
+

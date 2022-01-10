@@ -39,3 +39,22 @@
         </div>
     </body>
 </html>
+
+<script type="text/javascript"  src="http://code.jquery.com/jquery-3.3.1.min.js">
+
+jQuery(document).ready(function(){
+    if(window.location == "http://127.0.0.1:8000/dashboard"){
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url:"{{ route('categories.ads')}}",
+            method : "GET",
+            data : {_token:_token},
+            success : function(data){
+                // $('#categories').fadeIn();
+                // $('#categories').html(data);
+                alert(data);
+            }
+        });
+    }
+});
+</script>

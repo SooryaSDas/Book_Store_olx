@@ -39,4 +39,24 @@ Route::get('/postbooks', function (){
 
 Route::post('/actionadventure',[UserController::class,"actionadventure"]);
 
+Route::post('/classics',[UserController::class,"classics"]);
+
+Route::post('/biographies',[UserController::class,"biographies"]);
+
+Route::post('/commic',[UserController::class,"commic"]);
+
+Route::post('/detective',[UserController::class,"detective"]);
+
+Route::post('/essays',[UserController::class,"essays"]);
+
+Route::post('/historical',[UserController::class,"historical"]);
+
+Route::post('/horror',[UserController::class,"horror"]);
+
+Route::post('/sciencefiction',[UserController::class,"sciencefiction"]);
+
+Route::post('/shortstories',[UserController::class,"shortstories"]);
+
+Route::get('UserController/getads',[UserController::class,"getads"])->name('categories.ads');
+
 require __DIR__.'/auth.php';
