@@ -44,21 +44,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-    $(document).ready(function(){
-        if(window.location == "http://127.0.0.1:8000/dashboard"){
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                url:"{{ route('categories.ads')}}",
-                method : "GET",
-                data : {_token:_token},
-                success : function(data){
-                    // $('#categories').fadeIn();
-                    $('#Advertisements').html(data);
-                    // alert(data);
-                }
-            });
-        }
-    });
+    // $(document).ready(function(){
+    //     if(window.location == "http://127.0.0.1:8000/dashboard"){
+    //         var _token = $('input[name="_token"]').val();
+    //         $.ajax({
+    //             url:"{{ route('categories.ads')}}",
+    //             method : "GET",
+    //             data : {_token:_token},
+    //             success : function(data){
+    //                 // $('#categories').fadeIn();
+    //                 $('#Advertisements').html(data);
+    //                 // alert(data);
+    //             }
+    //         });
+    //     }
+    // });
 
     $(document).ready(function(){
         $('p img').on('click',function(){

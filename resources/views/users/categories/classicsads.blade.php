@@ -33,12 +33,12 @@
                           @if(count($classics)>0)
                             @foreach($classics as $row)
                                 <div class="col-md-3">
-                                <div class="card" style="height:350px; width:100%">
+                                    <div class="card" style="height:320px !important;">
                                         <img class="card-img-top" src=<?php echo strtok($row->photos, ',') ?> style="padding:8px !important; width:100%; height:182px;" alt="Categories of book">
                                         <div class="card-body" id="dashboardads">
-                                        <p class="card-text">{{$row->bookname}}</p>
-                                        <p class="card-text">{{$row->authorname}}</p>
-                                        <a href='{{url("/product/view/$row->id")}}'> <p class="card-text">VIEW </p></a>
+                                          <b><p class="card-text">{{$row->bookname}}</p></b>
+                                            <p class="card-text">{{$row->authorname}}</p>
+                                            <a href='{{url("/product/view/$row->id")}}'> <p class="card-text">VIEW </p></a>
                                         </div>
                                     </div> <br>
                                 </div>

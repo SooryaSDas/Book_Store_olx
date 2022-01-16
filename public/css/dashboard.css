@@ -1,5 +1,10 @@
 #dashboardads{
     padding:2px;
     text-align: center;
-    
+}
+#main_divbody{
+    cursor: pointer;
+}
+#main_divbody:hover{
+    transform: scale(1.12);
 }

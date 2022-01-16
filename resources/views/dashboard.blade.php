@@ -48,8 +48,32 @@
                         </div> -->
 
                         <div class="row" id="Advertisements">
-
-
+                                <?php
+                                if($ads->count()>0){
+                                    foreach($ads as $row){
+                                        $output.= 
+                                        '<div class="col-md-3"> 
+                                            <div class="card" style="height:370px !important;" id="main_divbody">
+                                                <img class="card-img-top" src='.strtok($row->photos, ',').' style="padding:10px !important; width:100%; height:182px;" alt="image"/>
+                                                <div class="card-body"  id="dashboardads"> 
+                                                <b><p class="card-text">'.$row->bookname.'</p></b>
+                                                    <p>'.$row->authorname.'</p>
+                                                    <p>'.$row->price.'</p>
+                                                    <a href=/product/view/'.$row->id.'>VIEW</a>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </div>
+                                        ';
+                                    }
+                                    $output.='';
+                                    echo $output;
+                                }
+                                else{
+                                    $output.= '<p>Not Found</p>';
+                                    // echo $output;
+                                }   
+                            ?>
                         </div>
                     </div>
                 </div>
