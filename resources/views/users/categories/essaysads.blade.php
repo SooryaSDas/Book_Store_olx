@@ -29,28 +29,24 @@
                         <strong>Advertisement</strong> 
                     </div>
                     <div class="card-body">
-                        <!-- <ul class="nav nav-item">
-                            <li class="nav-item">
-                                <a href="#home" class="nav-link" data-togle="tab">Categories</a>
-                            </li>
-                        </ul>
-                        <div id="mytabcontent" class="tabcontent">
-                            <div id="home">
-                                <h3 style="padding:10px; text-align:center; color:#6d6969;">Select Your Category</h3> 
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-lg-12">
-                            @if(session('info'))
-                                <div class="alert alert-success" style="margin-top:5px;">
-                                    {{session('info')}}
+                      <div class="row">
+                          @if(count($classics)>0)
+                            @foreach($classics as $row)
+                                <div class="col-md-3">
+                                    <div class="productcard">
+                                        <img src=<?php echo strtok($row->photos, ',') ?> style="padding:10px !important; width:100%; height:182px;"/>
+                                        <h5 style="margin-bottom: 0px;">{{$row->bookname}}</h5>
+                                        <h6 style="margin-bottom: 0px;">{{$row->authorname}}</h6>
+                                        <p> <a href='{{url("/product/view/$row->id")}}'>VIEW</a></p>
+                                    </div>
                                 </div>
-                            @endif   
-                        </div> -->
+                            @endforeach
 
-                        <div class="row" id="Advertisements">
+                            @else
 
 
-                        </div>
+                          @endif
+                      </div>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ Route::get('/postads',[UserController::class,"index"]);
 
 // Route::get('/viewAds/{maincategory}/{id}',[UserController::class,"viewAds"]);
 
-Route::get('/viewAds/{maincategory}/{id}',[UserController::class,"categories"]);
+Route::get('/post-classified-ads/{maincategory}/{id}',[UserController::class,"categories"]);
 
 Route::get('/postbooks', function (){
     return view('users.postbooks');
@@ -58,5 +58,11 @@ Route::post('/sciencefiction',[UserController::class,"sciencefiction"]);
 Route::post('/shortstories',[UserController::class,"shortstories"]);
 
 Route::get('UserController/getads',[UserController::class,"getads"])->name('categories.ads');
+
+Route::get('/viewads/{maincategory}/{id}',[UserController::class,"viewads"]);
+// search ads
+Route::post('/product/search',[UserController::class,"searchproduct"]);
+// product full view
+Route::get('/product/view/{id}',[UserController::class,"viewproduct"]);
 
 require __DIR__.'/auth.php';

@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <ul class="userpgcategory fa-ul" id="category">
                         @foreach($articles as $article)
-                            <li><a href="{{url('/viewAds/'.$article->maincategory.'/'.$article->id)}}">{{$article->maincategory}}</a></li>
+                            <li><a href="{{url('/post-classified-ads/'.$article->maincategory.'/'.$article->id)}}">{{$article->maincategory}}</a></li>
                         @endforeach    
                         </ul>
                     </div>

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Input;
 use App\Models\MainCategory;
 use App\Models\SubCategory;
 use App\Models\Advertisement;
-
 use DB;
 
 class UserController extends Controller
@@ -177,25 +176,6 @@ class UserController extends Controller
             $ads->photos =  $image;
             $ads->save();
             return redirect('/dashboard');
-
-            // for printing - checking data coming or not
-            // $data = array(
-            //     'maincategoryid' => $ads->maincategoryid,
-            //     'subcategoryid' =>  $ads->subcategoryid,
-            //     'bookname' =>  $ads->bookname,
-            //     'authorname' => $ads->authorname,
-            //     'publisher' =>  $ads->publisher,
-            //     'price' =>  $ads->price,
-            //     'name' =>  $ads->name,
-            //     'mobileno' =>  $ads->mobileno,
-            //     'email' => $ads->email,
-            //     'state' =>  $ads->state,
-            //     'photos' =>  $ads->photos,
-            // );
-
-            //     echo '<pre>';
-            //     print_r($data);
-            //     echo '</pre>';
         }
     }
 
@@ -551,9 +531,191 @@ class UserController extends Controller
         }
     }
 
+
+                    // <div> 
+                    //     <img src='.strtok($row->photos, ',').' style="padding:10px !important; width:100%; height:182px;" alt="image"/>
+                    //     <h5>'.$row->bookname.'</h5>
+                    //     <p>'.$row->authorname.'</p>
+                    //     <p>'.$row->price.'</p>
+                    //     <a href=/product/view/'.$row->id.'>VIEW</a>
+                    // </div>
+
+//     <div class="card" style="width: 18rem;">
+//   <img class="card-img-top" src="..." alt="Card image cap">
+//   <div class="card-body">
+//     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+//   </div>
+// </div>
+
     public function getads(){
-        echo "hello";
-       
+        // echo "hello";
+        $ads = DB::table('advertisements')->get();
+        $output = '';
+        if($ads->count()>0){
+            foreach($ads as $row){
+                $output.= 
+                '<div class="col-md-3"> 
+                    <div class="card" id="dashboardads">
+                        <img class="card-img-top" src='.strtok($row->photos, ',').' style="padding:10px !important; width:100%; height:182px;" alt="image"/>
+                        <div class="card-body">
+                            <p class="card-text"></p> 
+                            <h5>'.$row->bookname.'</h5>
+                            <p>'.$row->authorname.'</p>
+                            <p>'.$row->price.'</p>
+                            <a href=/product/view/'.$row->id.'>VIEW</a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                ';
+            }
+            $output.='';
+            echo $output;
+        }
+        else{
+            $output.= '<p>Not Found</p>';
+            // echo $output;
+        }
+
     }
+
+    public function viewads(Request $request, $maincategory, $id){
+        //    $data = array(
+        //     'maincategory'=> $maincategory,
+        //     'id'=>$id, 
+        //    );
+        //    echo '<pre>';
+        //    print_r($data);
+
+        if($id ==1)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.classicsads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==2)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.comicads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==3)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.horrorads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==4)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.detectiveads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==5)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.essaysads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==6)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.historicalads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==7)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.scienceads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==8)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.biographiesads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==9)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.shortstoriesads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+        if($id ==10)
+        {
+            $articles = MainCategory::all();
+            // $subcategories = SubCategory::all();
+                $classics = DB::table('Advertisements')
+                            -> where(['maincategoryid' => $id])
+                            ->get();
+            return view('users.categories.actionads',["articles" =>$articles,"classics"=>$classics]);
+        }
+
+    }
+
+    public function searchproduct(Request $request){
+       if($request->get('searchproduct')){
+           $query = $request->get('searchproduct');
+           $articles = MainCategory::all();
+           $subcategories = DB::table('main_categories')
+           ->select('*')
+           ->join('sub_categories', 'sub_categories.maincategoryid','=','main_categories.id')
+           ->get();
+           $data = DB::table('Advertisements')
+                    ->where('bookname', 'like', '%' .$query.'%')
+                    ->get();
+
+            return view('users.searchonproduct',["articles" =>$articles,"data"=>$data]);
+       }
+    }
+
+
+
+    public function viewproduct(Request $request, $id){
+        $articles = MainCategory::all();
+        $product = DB::table('Advertisements')
+                    ->where(['id'=>$id])
+                    ->get();
+        return view('users.productview',["articles" =>$articles,"product"=>$product]);
+
+    }
+   
 }
 
+ 

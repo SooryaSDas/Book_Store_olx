@@ -19,8 +19,9 @@
             </div>
 
             <div style="margin-left:78px; margin-top:10px">
-                <form class="form-inline my-2 my-lg-0" >
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Books" aria-label="Search">
+                <form  action="{{url('/product/search')}}" method="post" class="form-inline my-2 my-lg-0">
+               {{csrf_field()}}
+                <input class="form-control mr-sm-2" type="text" placeholder="Search Books" aria-label="Search" name="searchproduct" required>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
