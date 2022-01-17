@@ -8,3 +8,10 @@
 #main_divbody:hover{
     transform: scale(1.12);
 }
+#card_body{
+    margin-left: -76px;
+}
+#category_div{
+    margin-left: -58px;
+   
+}

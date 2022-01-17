@@ -20,7 +20,7 @@
         <div class="row justify-content-center">
             <div class="col-md-3">
             <br><br>
-                <div class="card">
+                <div class="card" id="category_div">
                     <div class="card-header">
                         <strong>Category</strong>
                     </div>
@@ -47,7 +47,6 @@
                         </ul>
                         <div id="mytabcontent" class="tabcontent">
                             <div id="home">
-                                <!-- <h3 style="padding:10px; text-align:center; color:#6d6969;">Select Your Category</h3> -->
                             </div>
                         </div>
                     </div>
@@ -57,3 +56,5 @@
     </div>
 
 </x-app-layout>
+
+}

@@ -171,6 +171,11 @@ class UserController extends Controller
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
 
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
+
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
             $ads->photos =  $image;
@@ -211,6 +216,11 @@ class UserController extends Controller
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
 
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
+
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
             $ads->photos =  $image;
@@ -249,6 +259,11 @@ class UserController extends Controller
             $ads->price = $request->input('price');
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
+
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
 
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
@@ -289,6 +304,11 @@ class UserController extends Controller
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
 
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
+
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
             $ads->photos =  $image;
@@ -327,6 +347,11 @@ class UserController extends Controller
             $ads->price = $request->input('price');
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
+
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
 
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
@@ -367,6 +392,11 @@ class UserController extends Controller
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
 
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
+
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
             $ads->photos =  $image;
@@ -405,6 +435,11 @@ class UserController extends Controller
             $ads->price = $request->input('price');
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
+
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
 
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
@@ -445,6 +480,11 @@ class UserController extends Controller
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
 
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
+
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
             $ads->photos =  $image;
@@ -484,6 +524,11 @@ class UserController extends Controller
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
 
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
+
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');
             $ads->photos =  $image;
@@ -522,6 +567,11 @@ class UserController extends Controller
             $ads->price = $request->input('price');
             $ads->name = $request->input('name');
             $ads->mobileno = $request->input('mobileno');
+
+            $ads->language = $request->input('language');
+            $ads->binding = $request->input('binding');
+            $ads->bookcondition = $request->input('bookcondition');
+            $ads->pages = $request->input('pages');
 
             $ads->email = $request->input('email');
             $ads->state = $request->input('state');

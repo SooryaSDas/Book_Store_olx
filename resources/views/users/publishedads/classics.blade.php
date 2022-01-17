@@ -103,7 +103,47 @@
         <label></label>
     </div>
 </div>
+<div class="row">
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label><strong>Language</strong></label>
+                                            <input type="text" class="form-control" name="language" placeholder="language" required>
+                                        </div>
+                                    </div>
+                                    <label></label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label><strong>Binding</strong></label>
+                                            <input type="text" class="form-control" name="binding" placeholder="Binding" required>
+                                        </div>
+                                    </div>
+                                    <label></label>
+                                </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label><strong>Book Condition</strong></label>
+                                            <input type="text" class="form-control" name="bookcondition" placeholder="Book Condition" required>
+                                        </div>
+                                    </div>
+                                    <label></label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label><strong>Pages</strong></label>
+                                            <input type="text" class="form-control" name="pages" placeholder="Pages" required>
+                                        </div>
+                                    </div>
+                                    <label></label>
+                                </div>
+                            </div>
 
 <div class="row">
     <div class="col-lg-6">

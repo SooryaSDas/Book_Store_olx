@@ -7,9 +7,9 @@
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-3">
-            <br><br>
-                <div class="card">
+            <div class="col-md-3" >
+                <br><br>
+                <div class="card" id="card_body">
                     <div class="card-header">
                         <strong>Category</strong>
                     </div>
@@ -24,10 +24,10 @@
             </div>
             <div class="col-md-9">
             <br><br>
-               <div class="card">
-                    <div class="card-header">
+               <div class="card" >
+                    <!-- <div class="card-header">
                         <strong>Advertisement</strong> 
-                    </div>
+                    </div> -->
                     <div class="card-body">
                         <!-- <ul class="nav nav-item">
                             <li class="nav-item">
@@ -53,13 +53,13 @@
                                     foreach($ads as $row){
                                         $output.= 
                                         '<div class="col-md-3"> 
-                                            <div class="card" style="height:370px !important;" id="main_divbody">
+                                            <div class="card" style="height:370px !important; width:190px;" id="main_divbody">
                                                 <img class="card-img-top" src='.strtok($row->photos, ',').' style="padding:10px !important; width:100%; height:182px;" alt="image"/>
                                                 <div class="card-body"  id="dashboardads"> 
                                                 <b><p class="card-text">'.$row->bookname.'</p></b>
                                                     <p>'.$row->authorname.'</p>
-                                                    <p>'.$row->price.'</p>
-                                                    <a href=/product/view/'.$row->id.'>VIEW</a>
+                                                    <p>'. '₹ ' .$row->price.'</p>
+                                                    <a href=/product/view/'.$row->id.'><button type="button" class="btn btn-outline-success">VIEW</button></a>
                                                 </div>
                                             </div>
                                             <br><br>

@@ -56,6 +56,10 @@
                                                     @endif
                                                 </p>
                                             </div>
+                                            <div>
+                                           <a href="#"><button type="button" class="btn btn-warning btn-lg">ADD TO CARD</button></a>
+                                           <a href="#"> <button type="button" class="btn btn-danger btn-lg">BUY NOW</button></a>                                          
+                                        </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="card border-secondary wb-3" style="max-width:20rem; border:1px solid #cc !important;">
@@ -69,12 +73,24 @@
                                                             <span title="xtra large">{{$ad->authorname}}</span>
                                                         </h6>
                                                         <hr>
-                                                        <h6> Book Publisher : 
-                                                            <span title="xtra large">{{$ad->publisher}}</span>
+                                                        <h6> Language : 
+                                                            <span title="xtra large">{{$ad->language}}</span>
                                                         </h6> 
                                                         <hr>
+                                                        <h6> Book Publisher : 
+                                                            <span title="xtra large">{{$ad->publisher}}</span>
+                                                        </h6>
+                                                        <hr>
+                                                        <h6> Binding : 
+                                                            <span title="xtra large">{{$ad->binding}}</span>
+                                                        </h6> 
+                                                        <hr>
+                                                        <h6> Book Condition : 
+                                                            <span title="xtra large">{{$ad->bookcondition}}</span>
+                                                        </h6>
+                                                        <hr>
                                                         <h6>Book price : 
-                                                            <span title="xtra large">{{$ad->price}}</span>
+                                                            <span title="xtra large"> ₹ {{$ad->price}}</span>
                                                         </h6> 
                                                     </div>
                                                 </div>

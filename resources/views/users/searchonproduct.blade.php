@@ -33,15 +33,15 @@
                           @if(count($data)>0)
                             @foreach($data as $row)
                                 <div class="col-md-3">
-                                    <div class="card" id="dashboardads">
-                                        <img class="card-img-top" src=<?php echo strtok($row->photos, ',') ?> style="padding:10px !important; width:100%; height:182px;" alt="image"/>
-                                        <div class="card-body">
-                                            <h5>{{$row->bookname}}</h5>
-                                            <p>{{$row->authorname}}</p>
-                                            <p>{{$row->authorname}}</p>
-                                            <a href='{{url("/product/view/$row->id")}}'>VIEW</a>
+                                    <div class="card" style="height:320px !important; width:120%; padding:8px;">
+                                      <center> <img class="card-img-top" src=<?php echo strtok($row->photos, ',') ?> style="padding:8px !important; width:90%; height:182px;" alt="Categories of book"></center> 
+                                        <div class="card-body" id="dashboardads">
+                                          <b><p class="card-text">{{$row->bookname}}</p></b>
+                                            <p class="card-text">{{$row->authorname}}</p>
+                                            <a href='{{url("/product/view/$row->id")}}'><button type="button" class="btn btn-outline-success">VIEW</button></a>
+                                            <!-- <a href='{{url("/product/view/$row->id")}}'> <p class="card-text">VIEW </p></a> -->
                                         </div>
-                                    </div>
+                                    </div> <br>
                                     <br>
                                 </div>
                             @endforeach

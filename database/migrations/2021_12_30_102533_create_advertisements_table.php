@@ -20,6 +20,10 @@ class CreateAdvertisementsTable extends Migration
             $table->string('bookname');
             $table->string('authorname');
             $table->string('publisher');
+            $table->string('language');
+            $table->string('binding');
+            $table->string('bookcondition');
+            $table->string('pages');
             $table->integer('price');
             $table->string('name');
             $table->string('mobileno');
