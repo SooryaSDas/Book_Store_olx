@@ -581,22 +581,6 @@ class UserController extends Controller
         }
     }
 
-
-                    // <div> 
-                    //     <img src='.strtok($row->photos, ',').' style="padding:10px !important; width:100%; height:182px;" alt="image"/>
-                    //     <h5>'.$row->bookname.'</h5>
-                    //     <p>'.$row->authorname.'</p>
-                    //     <p>'.$row->price.'</p>
-                    //     <a href=/product/view/'.$row->id.'>VIEW</a>
-                    // </div>
-
-//     <div class="card" style="width: 18rem;">
-//   <img class="card-img-top" src="..." alt="Card image cap">
-//   <div class="card-body">
-//     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-//   </div>
-// </div>
-
     public function getads(){
         // echo "hello";
         $ads = DB::table('advertisements')->get();
@@ -749,6 +733,7 @@ class UserController extends Controller
            ->get();
            $data = DB::table('Advertisements')
                     ->where('bookname', 'like', '%' .$query.'%')
+                    ->orWhere('authorname', 'LIKE', '%'.$query.'%')
                     ->get();
 
             return view('users.searchonproduct',["articles" =>$articles,"data"=>$data]);
