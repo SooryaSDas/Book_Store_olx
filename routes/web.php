@@ -16,9 +16,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+
+Route::get('/',[MainCategorycontroller::class,"home"])->name('home');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -66,3 +66,8 @@ Route::post('/product/search',[UserController::class,"searchproduct"]);
 Route::get('/product/view/{id}',[UserController::class,"viewproduct"]);
 
 require __DIR__.'/auth.php';
+
+
+
+
+                    

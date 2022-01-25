@@ -57,4 +57,3 @@
 
 </x-app-layout>
 
-}

@@ -11,23 +11,19 @@
 <!-- <title>Flipmart premium HTML5 & CSS3 Template</title> -->
 
 <!-- Bootstrap Core CSS -->
-
-<link rel="stylesheet" href="/css/asset/bootstrap.min.css">
-
+<link rel="stylesheet" href="css/asset/bootstrap.min.css">
 <!-- Customizable CSS -->
-<link rel="stylesheet" href="/css/dashboard.css">
-<link rel="stylesheet" href="/css/asset/main.css">
-<link rel="stylesheet" href="/css/asset/blue.css">
-<link rel="stylesheet" href="/css/asset/owl.carousel.css">
-<link rel="stylesheet" href="/css/asset/owl.transitions.css">
-<link rel="stylesheet" href="/css/asset/animate.min.css">
-<link rel="stylesheet" href="/css/asset/rateit.css">
-<link rel="stylesheet" href="/css/asset/bootstrap-select.min.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/asset/main.css">
+<link rel="stylesheet" href="css/asset/blue.css">
+<link rel="stylesheet" href="css/asset/owl.carousel.css">
+<link rel="stylesheet" href="css/asset/owl.transitions.css">
+<link rel="stylesheet" href="css/asset/animate.min.css">
+<link rel="stylesheet" href="css/asset/rateit.css">
+<link rel="stylesheet" href="css/asset/bootstrap-select.min.css">
 
 <!-- Icons/Glyphs -->
 <link rel="stylesheet" href="/css/asset/font-awesome.css">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -47,7 +43,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">   <br>
           <!-- ============================================================= LOGO ============================================================= -->
-          <div class="logo"> <a href="/dashboard"> <img src="/images/logo.png" alt="logo"> </a> </div>
+          <div class="logo"> <a href=""> <img src="images/logo.png" alt="logo"> </a> </div>
           <!-- /.logo --> 
           <!-- ============================================================= LOGO : END ============================================================= --> </div>
         <!-- /.logo-holder -->
@@ -56,7 +52,7 @@
           <!-- /.contact-row --> 
           <!-- ============================================================= SEARCH AREA ============================================================= -->
           <div class="search-area">
-            <form action="{{url('/product/search')}}" method="post">
+            <form action="{{url('/login')}}" method="post">
             {{csrf_field()}}
               <div class="control-group">
                 <input type="text" name="searchproduct" required class="search-field" placeholder="Search here..." />
@@ -69,31 +65,26 @@
           <!-- /.search-area --> 
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
         <!-- /.top-search-holder -->
- 
-    <br>
-
         
-         <a style="color:white;padding: 0;" ><b>{{ Auth::user()->name }}</b> <b class="caret"></b></a>
-          
-              <form method="POST" action="{{ route('logout') }}" >
-              @csrf
-              <x-dropdown-link :href="route('logout')"
-                  onclick="event.preventDefault();
-                  this.closest('form').submit();" style="color:wheat;">
-                <p>  {{ __('Log Out') }}</p>
-                </x-dropdown-link>
-            </form>
-       
-
-        
-
-
-
-
-
-
-
-    
+        <div class="top-bar animate-dropdown">
+    <div class="container">
+      <div class="header-top-inner">
+        <div class="cnt-account">
+          <ul class="list-unstyled">
+            <!-- <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li> -->
+            @if (Route::has('register'))
+              <li><a href="{{ route('register') }}" >Register</a></li>
+            @endif
+            <li><a href="{{ route('login') }}">Login</a></li>
+          </ul>
+        </div>
+        <!-- /.cnt-account -->
+      
+        <!-- /.cnt-cart -->
+        <div class="clearfix"></div>
+      </div>
+      <!-- /.header-top-inner --> 
+    </div>
     <!-- /.container --> 
   </div>
             
@@ -163,7 +154,7 @@
           <nav class="yamm megamenu-horizontal">
             <ul class="nav">
               @foreach($articles as $article)
-                <li><a href="{{url('/post-classified-ads/'.$article->maincategory.'/'.$article->id)}}" style="margin-left:25px">{{$article->maincategory}}</a></li>
+                <li><a href="{{url('/login')}}" style="margin-left:25px">{{$article->maincategory}}</a></li>
               @endforeach   
               
           </nav>
@@ -182,43 +173,43 @@
         <!-- ============================================== INFO BOXES ============================================== -->
         <div class="info-boxes wow fadeInUp">
           <div class="info-boxes-inner">
-            <!-- <div class="row"> -->
+            <div class="row">
               <div class="col-md-6 col-sm-4 col-lg-4">
-                <!-- <div class="info-box">
+                <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
                       <h4 class="info-box-heading green">Thousands of Books</h4>
                     </div>
                   </div>
                   <h6 class="text">Thousands of sub categories of book in one hand</h6>
-                </div> -->
+                </div>
               </div>
               <!-- .col -->
               
               <div class="hidden-md col-sm-4 col-lg-4">
-                <!-- <div class="info-box">
+                <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
                       <h4 class="info-box-heading green">free shipping</h4>
                     </div>
                   </div>
                   <h6 class="text"> Free shipping available for orders </h6>
-                </div> -->
+                </div>
               </div>
               <!-- .col -->
               
               <div class="col-md-6 col-sm-4 col-lg-4">
-                <!-- <div class="info-box">
+                <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
                       <h4 class="info-box-heading green">Special Sale</h4>
                     </div>
                   </div>
                   <h6 class="text">Only Memorial gives the best price of your books </h6>
-                </div> -->
+                </div>
               </div>
               <!-- .col --> 
-            <!-- </div> -->
+            </div>
             <!-- /.row --> 
           </div>
           <!-- /.info-boxes-inner --> 
@@ -234,12 +225,31 @@
         </div>
             <div style="margin-left:30px" class="row">
               <div class="row" id="Advertisements">
-                
-                    <div id="mytabcontent" class="tabcontent">
-                        <div id="home">
-                            <h3 style="padding:10px; text-align:center; color:#6d6969;">Select Your Category</h3> 
-                        </div>
-                    </div>
+                <?php
+                   if($ads->count()>0){
+                      foreach($ads as $row){
+                        $output.= 
+                          '<div class="col-md-3" style="width:200px;"> 
+                              <div class="card" style="height:300px !important; width:190px; width: 190px; border: 1px solid rgba(0,0,0,.125);" id="main_divbody">
+                                <img class="card-img-top" src='.strtok($row->photos, ',').' style="padding:10px !important; width:100%; height:182px;" alt="image"/>
+                                <div class="card-body"  id="dashboardads"> 
+                                  <b><p class="card-text">'.$row->bookname.'</p></b>
+                                  <p>'.$row->authorname.'</p>
+                                  <p>'. '₹ ' .$row->price.'</p>
+                                </div>
+                              </div>
+                              <br>
+                            </div>
+                           ';
+                        }
+                        $output.='';
+                        echo $output;
+                    }
+                    else{
+                      $output.= '<p>Not Found</p>';
+                                    
+                     }   
+                ?>
               </div>
             </div>
       </div>
@@ -250,6 +260,100 @@
   <!-- /.container --> 
 </div>
 <!-- /#top-banner-and-menu --> 
+
+<!-- ============================================================= FOOTER ============================================================= -->
+<footer id="footer" class="footer color-bg">
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="module-heading">
+            <h4 class="module-title">Contact Us</h4>
+          </div>
+          <!-- /.module-heading -->
+          
+          <div class="module-body">
+            <ul class="toggle-footer" style="">
+              <li class="media">
+                <div class="pull-left"> </div>
+                <div class="media-body">
+                  <p>ThemesGround, 789 Main rd, Anytown, CA 12345 USA</p>
+                </div>
+              </li>
+              <li class="media">
+                <div class="pull-left"> </div>
+                <div class="media-body">
+                  <p>+(888) 123-4567<br>
+                    +(888) 456-7890</p>
+                </div>
+              </li>
+              <li class="media">
+                <div class="pull-left"> </div>
+                <div class="media-body"> <span><a href="">memorial@themesground.com</a></span> </div>
+              </li>
+            </ul>
+          </div>
+          <!-- /.module-body --> 
+        </div>
+        <!-- /.col -->
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="module-heading">
+            <h4 class="module-title">Customer Service</h4>
+          </div>
+          <!-- /.module-heading -->
+          
+          <div class="module-body">
+            <ul class='list-unstyled'>
+              <li class="first"><a href="#" title="Contact us">My Account</a></li>
+              <li><a href="" title="About us">My Products</a></li>
+              <li><a href="" title="Popular Searches">Detailed view of books</a></li>
+            </ul>
+          </div>
+          <!-- /.module-body --> 
+        </div>
+        <!-- /.col -->
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="module-heading">
+            <h4 class="module-title">Corporation</h4>
+          </div>
+          <!-- /.module-heading -->
+          
+          <div class="module-body">
+            <ul class='list-unstyled'>
+              <li><a title="Information" href="">Customer Service</a></li>
+              <li><a title="Addresses" href="">Company</a></li>
+              <li><a title="Addresses" href="">Investor Relations</a></li>
+              <li class="last"><a title="Orders History" href=""> Search</a></li>
+            </ul>
+          </div>
+          <!-- /.module-body --> 
+        </div>
+        <!-- /.col -->
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="module-heading">
+            <h4 class="module-title">Why Choose Us</h4>
+          </div>
+          <!-- /.module-heading -->
+          
+          <div class="module-body">
+            <ul class='list-unstyled'>
+              <li class="first"><a href="" title="About us">Shopping Guide</a></li>
+              <li><a href="" title="Blog">Blog</a></li>
+              <li><a href="" title="Company">Company</a></li>
+              <li><a href="" title="Investor Relations">Investor Relations</a></li>
+            </ul>
+          </div>
+          <!-- /.module-body --> 
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</footer>
+<!-- ============================================================= FOOTER : END============================================================= --> 
 
 
 </body>

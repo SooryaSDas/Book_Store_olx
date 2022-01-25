@@ -614,13 +614,6 @@ class UserController extends Controller
     }
 
     public function viewads(Request $request, $maincategory, $id){
-        //    $data = array(
-        //     'maincategory'=> $maincategory,
-        //     'id'=>$id, 
-        //    );
-        //    echo '<pre>';
-        //    print_r($data);
-
         if($id ==1)
         {
             $articles = MainCategory::all();

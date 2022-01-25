@@ -29,6 +29,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+
 <!-- Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
@@ -47,7 +49,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">   <br>
           <!-- ============================================================= LOGO ============================================================= -->
-          <div class="logo"> <a href="/dashboard"> <img src="/images/logo.png" alt="logo"> </a> </div>
+          <div class="logo"> <a href=""> <img src="images/logo.png" alt="logo"> </a> </div>
           <!-- /.logo --> 
           <!-- ============================================================= LOGO : END ============================================================= --> </div>
         <!-- /.logo-holder -->
@@ -66,6 +68,7 @@
 
             
           </div>
+          <a href='{{url("/postads")}}'> <button type="button" style="margin-top: -61px; margin-left: 749px; width:20px}" class="btn btn-warning ">+ SELL</button></a>
           <!-- /.search-area --> 
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
         <!-- /.top-search-holder -->
@@ -163,7 +166,7 @@
           <nav class="yamm megamenu-horizontal">
             <ul class="nav">
               @foreach($articles as $article)
-                <li><a href="{{url('/post-classified-ads/'.$article->maincategory.'/'.$article->id)}}" style="margin-left:25px">{{$article->maincategory}}</a></li>
+                <li><a href="{{url('/viewads/'.$article->maincategory.'/'.$article->id)}}" style="margin-left:25px">{{$article->maincategory}}</a></li>
               @endforeach   
               
           </nav>
@@ -182,43 +185,43 @@
         <!-- ============================================== INFO BOXES ============================================== -->
         <div class="info-boxes wow fadeInUp">
           <div class="info-boxes-inner">
-            <!-- <div class="row"> -->
+            <div class="row">
               <div class="col-md-6 col-sm-4 col-lg-4">
-                <!-- <div class="info-box">
+                <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
                       <h4 class="info-box-heading green">Thousands of Books</h4>
                     </div>
                   </div>
                   <h6 class="text">Thousands of sub categories of book in one hand</h6>
-                </div> -->
+                </div>
               </div>
               <!-- .col -->
               
               <div class="hidden-md col-sm-4 col-lg-4">
-                <!-- <div class="info-box">
+                <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
                       <h4 class="info-box-heading green">free shipping</h4>
                     </div>
                   </div>
                   <h6 class="text"> Free shipping available for orders </h6>
-                </div> -->
+                </div>
               </div>
               <!-- .col -->
               
               <div class="col-md-6 col-sm-4 col-lg-4">
-                <!-- <div class="info-box">
+                <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
                       <h4 class="info-box-heading green">Special Sale</h4>
                     </div>
                   </div>
                   <h6 class="text">Only Memorial gives the best price of your books </h6>
-                </div> -->
+                </div>
               </div>
               <!-- .col --> 
-            <!-- </div> -->
+            </div>
             <!-- /.row --> 
           </div>
           <!-- /.info-boxes-inner --> 
@@ -234,12 +237,32 @@
         </div>
             <div style="margin-left:30px" class="row">
               <div class="row" id="Advertisements">
-                
-                    <div id="mytabcontent" class="tabcontent">
-                        <div id="home">
-                            <h3 style="padding:10px; text-align:center; color:#6d6969;">Select Your Category</h3> 
-                        </div>
-                    </div>
+                <?php
+                   if($ads->count()>0){
+                      foreach($ads as $row){
+                        $output.= 
+                          '<div class="col-md-3" style="width:200px;"> 
+                              <div class="card" style="height:350px !important; width:190px; width: 190px; border: 1px solid rgba(0,0,0,.125);" id="main_divbody">
+                                <img class="card-img-top" src='.strtok($row->photos, ',').' style="padding:10px !important; width:100%; height:182px;" alt="image"/>
+                                <div class="card-body"  id="dashboardads"> 
+                                  <b><p class="card-text">'.$row->bookname.'</p></b>
+                                  <p>'.$row->authorname.'</p>
+                                  <p>'. '₹ ' .$row->price.'</p>
+                                  <button type="button" class="btn btn-success"><a style="color:white" href=/product/view/'.$row->id.'> VIEW </a></button>
+                                </div>
+                              </div>
+                              <br>
+                            </div>
+                           ';
+                        }
+                        $output.='';
+                        echo $output;
+                    }
+                    else{
+                      $output.= '<p>Not Found</p>';
+                                    
+                     }   
+                ?>
               </div>
             </div>
       </div>

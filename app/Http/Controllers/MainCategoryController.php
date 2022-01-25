@@ -15,7 +15,15 @@ class MainCategoryController extends Controller
       $articles = MainCategory::all();
       $ads = DB::table('advertisements')->get();
         $output = '';
-      return view("dashboard",["articles" =>$articles, "ads"=>$ads,"output"=>$output]);
+      return view("userdashboard",["articles" =>$articles, "ads"=>$ads,"output"=>$output]);
+    }
+
+    public function home()
+    {
+      $articles = MainCategory::all();
+      $ads = DB::table('advertisements')->get();
+        $output = '';
+      return view("home",["articles" =>$articles, "ads"=>$ads,"output"=>$output]);
     }
 
  
