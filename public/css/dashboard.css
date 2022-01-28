@@ -25,3 +25,30 @@
 .labelstyle{
     padding-top: 21px;
 }
+#shopingcart{
+    padding: 0px;
+    background: #006cb4;
+    /* border: 3px solid #24609c; */
+    border-radius: 3px;
+    display: inline-block;
+    color: #fff;
+    font-size: 23px;
+    
+}
+#count{
+    border-radius: 100px;
+    height: 18px;
+    position: absolute;
+    left: 792px;
+    top: 74px;
+    width: 18px;
+    background: #fdd922;
+    /* color: #0f6cb2; */
+    color: rgb(12, 11, 11);
+    font-size: 11px;
+    text-align: center;
+    line-height: 19px;
+}
+#bodystyle{
+    left: 20%;
+}

@@ -64,10 +64,14 @@ Route::get('/viewads/{maincategory}/{id}',[UserController::class,"viewads"]);
 Route::post('/product/search',[UserController::class,"searchproduct"]);
 // product full view
 Route::get('/product/view/{id}',[UserController::class,"viewproduct"]);
+// add to cart
+Route::post('/addtocart',[MainCategorycontroller::class,"addtocart"]);
+// cart listing
+Route::get('/cartlist',[MainCategorycontroller::class,"cartlist"]);
+
+Route::get('/removefromcart/{id}',[MainCategorycontroller::class,"removefromcart"]);
 
 require __DIR__.'/auth.php';
-
-
 
 
                     

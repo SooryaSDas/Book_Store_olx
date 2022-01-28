@@ -209,6 +209,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <input type="hidden" name="maincategoryid" value={{Request::segment(3) }}>
+                                                <input type="hidden" name="userid" value={{Auth::user()->id}}>
                                                 <br><br>
                                                 <label class="labelstyle"> <strong>Select Category</strong></label>
                                                 <select class="form-control inputbox" name="subcategoryid" required>

@@ -161,6 +161,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -206,6 +207,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -250,6 +252,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -294,6 +297,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -338,6 +342,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -382,6 +387,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -426,6 +432,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -470,6 +477,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -514,6 +522,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');
@@ -558,6 +567,7 @@ class UserController extends Controller
             }
 
             $image = implode(",", $arr);
+            $ads->userid = $request->input('userid');
             $ads->maincategoryid = $request->input('maincategoryid');
             $ads->subcategoryid = $request->input('subcategoryid');
             $ads->bookname = $request->input('bookname');

@@ -185,7 +185,7 @@
         <!-- ============================================== SCROLL TABS ============================================== -->
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
           <div class="more-info-tab clearfix ">
-            <h3 class="new-product-title pull-left">Classics Books</h3>
+            <h3 class="new-product-title pull-left">Biographies</h3>
           </div>
           <div style="margin-left:50px" class="row">
               <div class="row" id="Advertisements">
@@ -209,6 +209,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <input type="hidden" name="maincategoryid" value={{Request::segment(3) }}>
+                                                <input type="hidden" name="userid" value={{Auth::user()->id}}>
                                                 <br><br>
                                                 <label class="labelstyle"> <strong>Select Category</strong></label>
                                                 <select class="form-control inputbox" name="subcategoryid" required>

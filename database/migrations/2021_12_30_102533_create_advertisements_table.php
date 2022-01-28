@@ -17,6 +17,7 @@ class CreateAdvertisementsTable extends Migration
             $table->id();
             $table->integer('maincategoryid');
             $table->integer('subcategoryid');
+            $table->integer('userid');
             $table->string('bookname');
             $table->string('authorname');
             $table->string('publisher');

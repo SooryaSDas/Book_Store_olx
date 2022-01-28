@@ -35,8 +35,13 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
 </head>
 <body class="cnt-home">
+  <?php
+    use App\Http\Controllers\MainCategoryController;
+    $total = MainCategoryController::cartitem();
+  ?>
 <!-- ============================================== HEADER ============================================== -->
 <header class="header-style-1"> 
   
@@ -69,6 +74,15 @@
             
           </div>
           <a href='{{url("/postads")}}'> <button type="button" style="margin-top: -61px; margin-left: 749px; width:20px}" class="btn btn-warning ">+ SELL</button></a>
+          
+          <div style="margin-left: 749px; background: #006cb4;">
+            <div class="basket">
+              <a href='{{url("/cartlist")}}'><i id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
+              <span id="count" class="count">{{$total}}</span>
+            </div>
+          </div>
+         
+
           <!-- /.search-area --> 
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
         <!-- /.top-search-holder -->
