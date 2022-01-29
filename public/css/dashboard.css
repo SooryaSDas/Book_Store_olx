@@ -35,12 +35,44 @@
     font-size: 23px;
     
 }
+#shopping{
+    margin-top: -17px;
+}
+
 #count{
     border-radius: 100px;
     height: 18px;
     position: absolute;
-    left: 792px;
-    top: 74px;
+    left: 853px;
+    top: 85px;
+    width: 18px;
+    background: #fdd922;
+    /* color: #0f6cb2; */
+    color: rgb(12, 11, 11);
+    font-size: 11px;
+    text-align: center;
+    line-height: 19px;
+}
+#countcart{
+    border-radius: 100px;
+    height: 18px;
+    position: absolute;
+    left: 853px;
+    top: 67px;
+    width: 18px;
+    background: #fdd922;
+    /* color: #0f6cb2; */
+    color: rgb(12, 11, 11);
+    font-size: 11px;
+    text-align: center;
+    line-height: 19px;
+}
+#countpro{
+    border-radius: 100px;
+    height: 18px;
+    position: absolute;
+    left: 1278px;
+    top: 103px;
     width: 18px;
     background: #fdd922;
     /* color: #0f6cb2; */
@@ -51,4 +83,50 @@
 }
 #bodystyle{
     left: 20%;
+}
+
+/* dropdown  started here*/
+.dropbtn {
+    background-color: #0b80cf;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+    
+  /* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+.show {display:block;}
+  
+#userdetails{
+    margin-top: -46px;
+    margin-left: 106%;
+  }
+
+#arrow{
+    margin-left: 93%;
+    margin-top: -73px;
 }

@@ -63,8 +63,6 @@
                 <button style="margin-left:134px" class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
               </div>
             </form>
-
-            
           </div>
           <!-- /.search-area --> 
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>

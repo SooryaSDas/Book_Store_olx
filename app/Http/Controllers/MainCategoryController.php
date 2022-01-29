@@ -59,4 +59,20 @@ class MainCategoryController extends Controller
       Cart::destroy($id);
       return redirect('/cartlist');
     }
+
+    function mysellingbooks(){
+      $userid = Auth::user()->id;
+      $myads = DB::table('users')
+        ->join('advertisements','users.id','=','advertisements.userid')
+        ->where('users.id',$userid)
+        ->select('advertisements.*','advertisements.id as ads_id')
+        ->get();
+
+        return view('users.myads',['myads'=>$myads]);
+    }
+
+    function removefromads($id){
+      Advertisement::destroy($id);
+      return redirect('/mysellingbooks');
+    }
 }

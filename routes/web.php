@@ -68,8 +68,13 @@ Route::get('/product/view/{id}',[UserController::class,"viewproduct"]);
 Route::post('/addtocart',[MainCategorycontroller::class,"addtocart"]);
 // cart listing
 Route::get('/cartlist',[MainCategorycontroller::class,"cartlist"]);
-
+// remove from cart
 Route::get('/removefromcart/{id}',[MainCategorycontroller::class,"removefromcart"]);
+// my ads display
+Route::get('/mysellingbooks',[MainCategorycontroller::class,"mysellingbooks"]);
+// remove from the advertisement
+Route::get('/removefromads/{id}',[MainCategorycontroller::class,"removefromads"]);
+
 
 require __DIR__.'/auth.php';
 

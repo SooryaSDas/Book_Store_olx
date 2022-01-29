@@ -70,14 +70,32 @@
                 <button style="margin-left:134px" class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
               </div>
             </form>
-
-            
           </div>
-          <a href='{{url("/postads")}}'> <button type="button" style="margin-top: -61px; margin-left: 749px; width:20px}" class="btn btn-warning ">+ SELL</button></a>
+
+          <div id="userdetails" class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }}</button><b id="arrow" class="caret"></b> 
+            <div id="myDropdown" class="dropdown-content">
+              <a href='{{url("/postads")}}'> + SELL</a>
+              <a href='{{url("/cartlist")}}'>MY CART</a>
+              <a href='{{url("/mysellingbooks")}}'>My ADS</a>
+              <form method="POST" action="{{ route('logout') }}" >
+                @csrf
+                <x-dropdown-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                    this.closest('form').submit();" style="color:black;">
+                  <p>  {{ __('Logout') }}</p>
+                  </x-dropdown-link>
+              </form>
+            </div>
+          </div>
+
+          <a href='{{url("/postads")}}'> <button type="button" style="margin-top: -91px; margin-left: 799px; width:20px}" class="btn btn-warning ">+ SELL</button></a>
           
-          <div style="margin-left: 749px; background: #006cb4;">
+          <!-- <a href='{{url("/mysellingbooks")}}'> <button type="button" style="margin-top: -41px; margin-left: 839px; width:20px}" class="btn btn-warning ">My Books</button></a> -->
+
+          <div id="shopping">
             <div class="basket">
-              <a href='{{url("/cartlist")}}'><i id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
+              <a href='{{url("/cartlist")}}'><i  style="margin-left: 808px; background: #006cb4;" id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
               <span id="count" class="count">{{$total}}</span>
             </div>
           </div>
@@ -90,7 +108,7 @@
     <br>
 
         
-         <a style="color:white;padding: 0;" ><b>{{ Auth::user()->name }}</b> <b class="caret"></b></a>
+         <!-- <a style="color:white;padding: 0;" ><b>{{ Auth::user()->name }}</b> <b class="caret"></b></a>
           
               <form method="POST" action="{{ route('logout') }}" >
               @csrf
@@ -99,18 +117,10 @@
                   this.closest('form').submit();" style="color:wheat;">
                 <p>  {{ __('Log Out') }}</p>
                 </x-dropdown-link>
-            </form>
+            </form> -->
        
 
         
-
-
-
-
-
-
-
-    
     <!-- /.container --> 
   </div>
             
@@ -121,7 +131,7 @@
     <!-- /.container --> 
     
   </div>
-  <!-- /.main-header --> 
+  <!-- /.main-header -->
   
   <!-- ============================================== NAVBAR ============================================== -->
   <div class="header-nav animate-dropdown">
@@ -262,7 +272,7 @@
                                   <b><p class="card-text">'.$row->bookname.'</p></b>
                                   <p>'.$row->authorname.'</p>
                                   <p>'. '₹ ' .$row->price.'</p>
-                                  <button type="button" class="btn btn-success"><a style="color:white" href=/product/view/'.$row->id.'> VIEW </a></button>
+                                  <a style="color:white" href=/product/view/'.$row->id.'><button type="button" class="btn btn-success"> VIEW </button></a>
                                 </div>
                               </div>
                               <br>
@@ -291,3 +301,24 @@
 
 </body>
 </html>
+
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+</script>

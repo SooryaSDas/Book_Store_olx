@@ -71,16 +71,38 @@
                 <button style="margin-left:134px" class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
               </div>
             </form>
-
-            
           </div>
 
-          <div style="margin-left: 749px; background: #006cb4;">
+          <div id="userdetails" class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }}</button><b id="arrow" class="caret"></b> 
+            <div id="myDropdown" class="dropdown-content">
+              <a href='{{url("/postads")}}'> + SELL</a>
+              <a href='{{url("/cartlist")}}'>MY CART</a>
+              <a href='{{url("/mysellingbooks")}}'>My ADS</a>
+              <form method="POST" action="{{ route('logout') }}" >
+                @csrf
+                <x-dropdown-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                    this.closest('form').submit();" style="color:black;">
+                  <p>  {{ __('Logout') }}</p>
+                  </x-dropdown-link>
+              </form>
+            </div>
+          </div>
+
+          <div id="shopping">
+            <div class="basket">
+              <a href='{{url("/cartlist")}}'><i  style="margin-left: 808px; background: #006cb4;" id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
+              <span id="countcart" class="count">{{$total}}</span>
+            </div>
+          </div>
+
+          <!-- <div style="margin-left: 749px; background: #006cb4;">
             <div class="basket">
               <a href='{{url("/cartlist")}}'><i id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
               <span style="margin-top:-19px" id="count" class="count">{{$total}}</span>
             </div>
-          </div>
+          </div> -->
           <!-- /.search-area --> 
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
         <!-- /.top-search-holder -->
@@ -88,17 +110,7 @@
     <br>
 
         
-         <a style="color:white;padding: 0;" ><b>{{ Auth::user()->name }}</b> <b class="caret"></b></a>
-          
-              <form method="POST" action="{{ route('logout') }}" >
-              @csrf
-              <x-dropdown-link :href="route('logout')"
-                  onclick="event.preventDefault();
-                  this.closest('form').submit();" style="color:wheat;">
-                <p>  {{ __('Log Out') }}</p>
-                </x-dropdown-link>
-            </form>
-       
+         
     <!-- /.container --> 
   </div>
             
@@ -233,3 +245,24 @@
               </div>
             </div>
       </div>
+  
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+</script>

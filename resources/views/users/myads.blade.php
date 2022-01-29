@@ -38,7 +38,8 @@
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body class="cnt-home">
-  <?php
+
+<?php
     use App\Http\Controllers\MainCategoryController;
     $total = MainCategoryController::cartitem();
   ?>
@@ -70,9 +71,32 @@
                 <button style="margin-left:134px" class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
               </div>
             </form>
-
-            
           </div>
+
+          <div id="userdetails" class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }}</button><b id="arrow" class="caret"></b> 
+            <div id="myDropdown" class="dropdown-content">
+              <a href='{{url("/postads")}}'> + SELL</a>
+              <!-- <a href='{{url("/cartlist")}}'>MY CART</a> -->
+              <a href='{{url("/mysellingbooks")}}'>My ADS</a>
+              <form method="POST" action="{{ route('logout') }}" >
+                @csrf
+                <x-dropdown-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                    this.closest('form').submit();" style="color:black;">
+                  <p>  {{ __('Logout') }}</p>
+                  </x-dropdown-link>
+              </form>
+            </div>
+          </div>
+
+          <div id="shopping">
+            <div class="basket">
+              <a href='{{url("/cartlist")}}'><i  style="margin-left: 808px; background: #006cb4;" id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
+              <span id="countcart" class="count">{{$total}}</span>
+            </div>
+          </div>
+
           <!-- <div style="margin-left: 749px; background: #006cb4;">
             <div class="basket">
               <a href='{{url("/cartlist")}}'><i id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
@@ -85,29 +109,8 @@
  
     <br>
 
-    <div id="userdetailspro" class="dropdown">
-        <button style="padding-top: 4%;" onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }}</button><b id="arrow" class="caret"></b> 
-          <div id="myDropdown" class="dropdown-content">
-              <a href='{{url("/postads")}}'> + SELL</a>
-              <!-- <a href='{{url("/cartlist")}}'>MY CART</a> -->
-              <a href='{{url("/mysellingbooks")}}'>My ADS</a>
-              <form method="POST" action="{{ route('logout') }}" >
-                @csrf
-                <x-dropdown-link :href="route('logout')"
-                    onclick="event.preventDefault();
-                    this.closest('form').submit();" style="color:black;">
-                  <p>  {{ __('Logout') }}</p>
-                  </x-dropdown-link>
-              </form>
-          </div>
-      </div>
-
-      <div id="shopping">
-            <div class="basket">
-              <a href='{{url("/cartlist")}}'><i  style=" margin-left: 1076px; margin-top: -20px; background: #006cb4;" id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
-              <span id="countpro" class="count">{{$total}}</span>
-            </div>
-          </div>
+        
+         
     <!-- /.container --> 
   </div>
             
@@ -164,55 +167,27 @@
   
 </header>
 
-<!-- ============================================== HEADER : END ============================================== -->
-<div class="body-content outer-top-xs" id="top-banner-and-menu">
-  <div class="container">
-    <div class="row"> 
-      <!-- ============================================== SIDEBAR ============================================== -->
-      <div class="col-xs-12 col-sm-12 col-md-3 sidebar"> 
-        
-        <!-- ================================== TOP NAVIGATION ================================== -->
-        <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div class="head"> Categories</div>
-          <nav class="yamm megamenu-horizontal">
-            <ul class="nav">
-              @foreach($articles as $article)
-                <li><a href="{{url('/viewads/'.$article->maincategory.'/'.$article->id)}}" style="margin-left:25px">{{$article->maincategory}}</a></li>
-              @endforeach   
-              
-          </nav>
-          <!-- /.megamenu-horizontal --> 
-        </div>
-        <!-- /.side-menu --> 
-        <!-- ================================== TOP NAVIGATION : END ================================== --> 
+
+<div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder"> 
     
-      </div>
-      <!-- /.sidemenu-holder --> 
-      <!-- ============================================== SIDEBAR : END ============================================== --> 
-      
-      <!-- ============================================== CONTENT ============================================== -->
-      <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder"> 
-    
-        <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
+        <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp" style="padding-left: 600px; width: 131%;" >
           <div class="more-info-tab clearfix ">
-            <h3 class="new-product-title pull-left"> Books</h3>
+            <h3 class="new-product-title pull-left"> MY CART</h3>
           </div>
         </div>
             <div style="margin-left:30px" class="row">
               <div class="row" id="Advertisements">
-              <div class="card-body">
-                    @if(isset($product))
-                        @if(count($product)>0)
-                            @foreach($product as $ad)
+              <div class="card-body" style="margin-left: 20%;">
+                            @foreach($myads as $item)
                                 <?php
                                     $img = [];
-                                    $img = explode(",", $ad->photos);
+                                    $img = explode(",", $item->photos);
                                 
                                 ?>
-                                <div class="row">
+                                <div class="row" style="padding: 22px; border: 1px solid rgba(0,0,0,.125);">
                                     <div class="col-lg-6">
                                         <div class="row featured" id="featured-image">
-                                            <img class="main" src="{{$img[0]}}" alt="1st image" width="80%"/>
+                                            <img class="main" src="{{$img[0]}}" alt="1st image" width="60%"/>
                                         </div>
                                         <div class="column">
                                             <p>
@@ -228,112 +203,50 @@
                                                 @endif
                                             </p>
                                         </div>
-                                        <div>
-                                        <form action="{{url('/addtocart')}}" method="post">
-                                        {{csrf_field()}}
-                                          <input type="hidden" name="product_id" value={{$ad->id}}>
-                                          <input type="hidden" name="user_id" value={{Auth::user()->id}}>
-                                          <button type="submit" class="btn btn-warning btn-lg" >ADD TO CART</button>
-                                        </form>
-                                    
-                                    <a href="#"> <button type="button" class="btn btn-danger btn-lg">BUY NOW</button></a>                                          
+                                        <div>                                 
                                     </div>
                                     </div>
-                                    <div class="col-lg-6" >
+                                    <div class="col-lg-4" >
                                         <div class="card border-secondary wb-3" style="max-width:20rem !important;">
-                                        <b> <div class="card-header">Book Details</div></b>
+                                        <h4><div class="card-header">Book Details</div></h4>
                                                 <div class="card-body" style="padding-top: 20px;">
                                                     <h5 class="conetent_padding">Name : 
-                                                        <span title="xtra large">{{$ad->bookname}}</span>
+                                                        <span title="xtra large">{{$item->bookname}}</span>
                                                     </h5> 
                                                     <h5 class="conetent_padding"> Author : 
-                                                        <span title="xtra large">{{$ad->authorname}}</span>
+                                                        <span title="xtra large">{{$item->authorname}}</span>
                                                     </h5>
                                                     <h5 class="conetent_padding"> Language : 
-                                                        <span title="xtra large">{{$ad->language}}</span>
+                                                        <span title="xtra large">{{$item->language}}</span>
                                                     </h5> 
                                                     <h5 class="conetent_padding"> Book Publisher : 
-                                                        <span title="xtra large">{{$ad->publisher}}</span>
+                                                        <span title="xtra large">{{$item->publisher}}</span>
                                                     </h5>
                                                     <h5 class="conetent_padding"> Binding : 
-                                                        <span title="xtra large">{{$ad->binding}}</span>
+                                                        <span title="xtra large">{{$item->binding}}</span>
                                                     </h5>
                                                     <h5 class="conetent_padding"> Book Condition : 
-                                                        <span title="xtra large">{{$ad->bookcondition}}</span>
+                                                        <span title="xtra large">{{$item->bookcondition}}</span>
                                                     </h5>
                                                     <h5 class="conetent_padding">Book price : 
-                                                        <span title="xtra large"> ₹ {{$ad->price}}</span>
+                                                        <span title="xtra large"> ₹ {{$item->price}}</span>
                                                     </h5> 
                                                 </div>
                                             </div>
                                             <br><br>
-                                            <div class="card border-secondary wb-3" style="max-width:20rem !important;">
-                                        <b> <div class="card-header">Seller Details</div></b>
-                                                <div class="card-body">
-                                                    <h5 class="conetent_padding">Name : 
-                                                        <span title="xtra large">{{$ad->name}}</span>
-                                                    </h5> 
-                                                    <h5 class="conetent_padding"> Mobile Number : 
-                                                        <span title="xtra large">{{$ad->mobileno}}</span>
-                                                    </h5>
-                                                    <h5 class="conetent_padding"> Email : 
-                                                        <span title="xtra large">{{$ad->email}}</span>
-                                                    </h5> 
-                                                    <h5 class="conetent_padding">State : 
-                                                        <span title="xtra large">{{$ad->state}}</span>
-                                                    </h5> 
-                                                </div>
-                                            </div>
-
-
+                                           <a href="/removefromads/{{$item->ads_id}}"> <button class="btn btn-warning">Remove from ADS</button></a>
                                         </div>
-                                    </div>
+                                  </div>
+                                  <br><br> <br><br>
                             @endforeach
-                            @else
-                                <p>Not Found</p>
-                        @endif
-                    @endif
                     </div>
+                    <a href=""> <button style="Margin-left:20%" class="btn btn-success btn-lg btn-block">ORDER NOW</button></a>
+                      <br><br><br><br>
               </div>
             </div>
       </div>
-    </div>
-   
-     
-  </div>
-  <!-- /.container --> 
-</div>
-<!-- /#top-banner-and-menu --> 
-</body>
-</html>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-
-    // $(document).ready(function(){
-    //     if(window.location == "http://127.0.0.1:8000/dashboard"){
-    //         var _token = $('input[name="_token"]').val();
-    //         $.ajax({
-    //             url:"{{ route('categories.ads')}}",
-    //             method : "GET",
-    //             data : {_token:_token},
-    //             success : function(data){
-    //                 // $('#categories').fadeIn();
-    //                 $('#Advertisements').html(data);
-    //                 // alert(data);
-    //             }
-    //         });
-    //     }
-    // });
-
-    $(document).ready(function(){
-        $('p img').on('click',function(){
-            $('.main').attr('src',$(this).attr('src'));
-        });
-    });
-
-
+  
+<script>
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -351,6 +264,5 @@ window.onclick = function(event) {
     }
   }
 }
-
 
 </script>
