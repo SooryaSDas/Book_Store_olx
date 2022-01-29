@@ -77,7 +77,7 @@
             <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }}</button><b id="arrow" class="caret"></b> 
             <div id="myDropdown" class="dropdown-content">
               <a href='{{url("/postads")}}'> + SELL</a>
-              <!-- <a href='{{url("/cartlist")}}'>MY CART</a> -->
+              <a href='{{url("/cartlist")}}'>MY CART</a>
               <a href='{{url("/mysellingbooks")}}'>My ADS</a>
               <form method="POST" action="{{ route('logout') }}" >
                 @csrf
@@ -166,85 +166,9 @@
   <!-- ============================================== NAVBAR : END ============================================== --> 
   
 </header>
-
-
-<div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder"> 
-    
-        <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp" style="padding-left: 600px; width: 131%;" >
-          <div class="more-info-tab clearfix ">
-            <h3 class="new-product-title pull-left"> MY CART</h3>
-          </div>
-        </div>
-            <div style="margin-left:30px" class="row">
-              <div class="row" id="Advertisements">
-              <div class="card-body" style="margin-left: 20%;">
-                            @foreach($myads as $item)
-                                <?php
-                                    $img = [];
-                                    $img = explode(",", $item->photos);
-                                
-                                ?>
-                                <div class="row" style="padding: 22px; border: 1px solid rgba(0,0,0,.125);">
-                                    <div class="col-lg-6">
-                                        <div class="row featured" id="featured-image">
-                                            <img class="main" src="{{$img[0]}}" alt="1st image" width="60%"/>
-                                        </div>
-                                        <div class="column">
-                                            <p>
-                                                <br> 
-                                                @if(isset($img[1]))
-                                                <img src="{{$img[1]}}" alt="2st image" width="100px" height="100px"/>
-                                                @endif
-                                                @if(isset($img[2]))
-                                                <img src="{{$img[2]}}" alt="3st image" width="100px" height="100px"/>
-                                                @endif
-                                                @if(isset($img[3]))
-                                                <img src="{{$img[3]}}" alt="4st image" width="100px" height="100px"/>
-                                                @endif
-                                            </p>
-                                        </div>
-                                        <div>                                 
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-4" >
-                                        <div class="card border-secondary wb-3" style="max-width:20rem !important;">
-                                        <h4><div class="card-header">Book Details</div></h4>
-                                                <div class="card-body" style="padding-top: 20px;">
-                                                    <h5 class="conetent_padding">Name : 
-                                                        <span title="xtra large">{{$item->bookname}}</span>
-                                                    </h5> 
-                                                    <h5 class="conetent_padding"> Author : 
-                                                        <span title="xtra large">{{$item->authorname}}</span>
-                                                    </h5>
-                                                    <h5 class="conetent_padding"> Language : 
-                                                        <span title="xtra large">{{$item->language}}</span>
-                                                    </h5> 
-                                                    <h5 class="conetent_padding"> Book Publisher : 
-                                                        <span title="xtra large">{{$item->publisher}}</span>
-                                                    </h5>
-                                                    <h5 class="conetent_padding"> Binding : 
-                                                        <span title="xtra large">{{$item->binding}}</span>
-                                                    </h5>
-                                                    <h5 class="conetent_padding"> Book Condition : 
-                                                        <span title="xtra large">{{$item->bookcondition}}</span>
-                                                    </h5>
-                                                    <h5 class="conetent_padding">Book price : 
-                                                        <span title="xtra large"> ₹ {{$item->price}}</span>
-                                                    </h5> 
-                                                </div>
-                                            </div>
-                                            <br><br>
-                                           <a href="/removefromads/{{$item->ads_id}}"> <button class="btn btn-warning">Remove from ADS</button></a>
-                                        </div>
-                                  </div>
-                                  <br><br> <br><br>
-                            @endforeach
-                    </div>
-                    <a href=""> <button style="Margin-left:20%" class="btn btn-success btn-lg btn-block">ORDER NOW</button></a>
-                      <br><br><br><br>
-              </div>
-            </div>
-      </div>
+    @yield('content')
+</body>
+</html>
   
 <script>
 function myFunction() {

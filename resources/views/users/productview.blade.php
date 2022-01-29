@@ -236,11 +236,12 @@
                                           <button type="submit" class="btn btn-warning btn-lg" >ADD TO CART</button>
                                         </form>
                                     
-                                    <a href="#"> <button type="button" class="btn btn-danger btn-lg">BUY NOW</button></a>                                          
+                                    <a href="#"> <button id="buynow" type="button" class="btn btn-success btn-lg">BUY NOW</button></a>                                          
                                     </div>
                                     </div>
+                                    <br><br><br><br>
                                     <div class="col-lg-6" >
-                                        <div class="card border-secondary wb-3" style="max-width:20rem !important;">
+                                        <div class="card border-secondary wb-3" style="max-width:30rem !important;">
                                         <b> <div class="card-header">Book Details</div></b>
                                                 <div class="card-body" style="padding-top: 20px;">
                                                     <h5 class="conetent_padding">Name : 

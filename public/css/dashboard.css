@@ -118,6 +118,10 @@
     text-decoration: none;
     display: block;
   }
+.dropdown-content a:hover{
+    background-color: #0b80cf;
+    color: white;
+}
   
 .show {display:block;}
   
@@ -129,4 +133,8 @@
 #arrow{
     margin-left: 93%;
     margin-top: -73px;
+}
+#buynow{
+    margin-left: 163px;
+    margin-top: -16%;
 }
