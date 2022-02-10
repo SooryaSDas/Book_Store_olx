@@ -89,7 +89,7 @@
         <button style="padding-top: 4%;" onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }}</button><b id="arrow" class="caret"></b> 
           <div id="myDropdown" class="dropdown-content">
               <a href='{{url("/postads")}}'> + SELL</a>
-              <!-- <a href='{{url("/cartlist")}}'>MY CART</a> -->
+              <a href='{{url("/cartlist")}}'>MY CART</a>
               <a href='{{url("/mysellingbooks")}}'>My ADS</a>
               <form method="POST" action="{{ route('logout') }}" >
                 @csrf
@@ -244,9 +244,9 @@
                                         <div class="card border-secondary wb-3" style="max-width:30rem !important;">
                                         <b> <div class="card-header">Book Details</div></b>
                                                 <div class="card-body" style="padding-top: 20px;">
-                                                    <h5 class="conetent_padding">Name : 
-                                                        <span title="xtra large">{{$ad->bookname}}</span>
-                                                    </h5> 
+                                                    <b><h4 class="conetent_padding">Book Name : </b>
+                                                    <b> <span title="xtra large">{{$ad->bookname}}</span></b>
+                                                    </h4> 
                                                     <h5 class="conetent_padding"> Author : 
                                                         <span title="xtra large">{{$ad->authorname}}</span>
                                                     </h5>

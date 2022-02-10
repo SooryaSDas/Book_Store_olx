@@ -77,7 +77,7 @@
             <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }}</button><b id="arrow" class="caret"></b> 
             <div id="myDropdown" class="dropdown-content">
               <a href='{{url("/postads")}}'> + SELL</a>
-              <!-- <a href='{{url("/cartlist")}}'>MY CART</a> -->
+              <a href='{{url("/cartlist")}}'>MY CART</a>
               <a href='{{url("/mysellingbooks")}}'>My ADS</a>
               <form method="POST" action="{{ route('logout') }}" >
                 @csrf
@@ -172,7 +172,7 @@
     
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp" style="padding-left: 600px; width: 131%;" >
           <div class="more-info-tab clearfix ">
-            <h3 class="new-product-title pull-left"> MY CART</h3>
+            <h3 class="new-product-title pull-left"> MY ADS</h3>
           </div>
         </div>
             <div style="margin-left:30px" class="row">

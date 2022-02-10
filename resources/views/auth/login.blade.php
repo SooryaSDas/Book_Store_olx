@@ -11,7 +11,7 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+        <div></div>
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

@@ -8,7 +8,6 @@
 <meta name="author" content="">
 <meta name="keywords" content="MediaCenter, Template, eCommerce">
 <meta name="robots" content="all">
-<!-- <title>Flipmart premium HTML5 & CSS3 Template</title> -->
 
 <!-- Bootstrap Core CSS -->
 
@@ -90,48 +89,23 @@
           </div>
 
           <a href='{{url("/postads")}}'> <button type="button" style="margin-top: -91px; margin-left: 799px; width:20px}" class="btn btn-warning ">+ SELL</button></a>
-          
-          <!-- <a href='{{url("/mysellingbooks")}}'> <button type="button" style="margin-top: -41px; margin-left: 839px; width:20px}" class="btn btn-warning ">My Books</button></a> -->
-
+        
           <div id="shopping">
             <div class="basket">
               <a href='{{url("/cartlist")}}'><i  style="margin-left: 808px; background: #006cb4;" id="shopingcart" class="icon fa fa-shopping-cart"></i></a>
               <span id="count" class="count">{{$total}}</span>
             </div>
           </div>
-         
-
-          <!-- /.search-area --> 
-          <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
-        <!-- /.top-search-holder -->
  
-    <br>
-
-        
-         <!-- <a style="color:white;padding: 0;" ><b>{{ Auth::user()->name }}</b> <b class="caret"></b></a>
-          
-              <form method="POST" action="{{ route('logout') }}" >
-              @csrf
-              <x-dropdown-link :href="route('logout')"
-                  onclick="event.preventDefault();
-                  this.closest('form').submit();" style="color:wheat;">
-                <p>  {{ __('Log Out') }}</p>
-                </x-dropdown-link>
-            </form> -->
-       
-
-        
-    <!-- /.container --> 
+    <br>        
   </div>
             
       </div>
    <br>
       
     </div>
-    <!-- /.container --> 
     
   </div>
-  <!-- /.main-header -->
   
   <!-- ============================================== NAVBAR ============================================== -->
   <div class="header-nav animate-dropdown">
@@ -157,19 +131,13 @@
                 <li class="dropdown"> <a href="">Science Fiction</a> </li>
                 <li class="dropdown"> <a href="">Short Stories</a> </li>
                
-              <!-- /.navbar-nav -->
               <div class="clearfix"></div>
             </div>
-            <!-- /.nav-outer --> 
           </div>
-          <!-- /.navbar-collapse --> 
           
         </div>
-        <!-- /.nav-bg-class --> 
       </div>
-      <!-- /.navbar-default --> 
     </div>
-    <!-- /.container-class --> 
     
   </div>
   <!-- /.header-nav --> 
@@ -194,15 +162,9 @@
               @endforeach   
               
           </nav>
-          <!-- /.megamenu-horizontal --> 
         </div>
-        <!-- /.side-menu --> 
-        <!-- ================================== TOP NAVIGATION : END ================================== --> 
-    
+       
       </div>
-      <!-- /.sidemenu-holder --> 
-      <!-- ============================================== SIDEBAR : END ============================================== --> 
-      
       <!-- ============================================== CONTENT ============================================== -->
       <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder"> 
         

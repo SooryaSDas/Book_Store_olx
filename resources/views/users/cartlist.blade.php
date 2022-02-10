@@ -207,11 +207,11 @@
                                     </div>
                                     </div>
                                     <div class="col-lg-4" >
-                                        <div class="card border-secondary wb-3" style="max-width:20rem !important;">
+                                        <div class="card border-secondary wb-3" style="max-width:30rem !important;">
                                         <h4><div class="card-header">Book Details</div></h4>
                                                 <div class="card-body" style="padding-top: 20px;">
-                                                    <h5 class="conetent_padding">Name : 
-                                                        <span title="xtra large">{{$item->bookname}}</span>
+                                                    <b><h5 class="conetent_padding">Name : </b>
+                                                    <b>   <span title="xtra large">{{$item->bookname}}</span></b>
                                                     </h5> 
                                                     <h5 class="conetent_padding"> Author : 
                                                         <span title="xtra large">{{$item->authorname}}</span>
