@@ -31,11 +31,28 @@ class MainCategoryController extends Controller
     }
 
     public function addtocart(Request $request){
-      $cart = new Cart;
-      $cart->product_id = $request->input('product_id');
-      $cart->user_id = $request->input('user_id');
-      $cart->save();
-      return redirect('/dashboard');
+      $product_id = $request->input('product_id');
+      $prod_qty = $request->input('prod_qty');
+      $user_id = $request->input('user_id');
+      if(Auth::check())
+      {
+      $prod_check = Advertisement::where('id',$product_id)->first();
+      if($prod_check){
+        if(Cart::where('product_id',$product_id)->where('user_id',$user_id)->exists())
+        {
+          return response()->json(['status' =>$prod_check->name."Already added to cart"]);
+        }
+        else{
+          $cart = new Cart;
+          $cart->product_id = $request->input('product_id');
+          $cart->prod_qty = $request->input('product_qty');
+          $cart->user_id = $request->input('user_id');
+          $cart->save();
+          return redirect('/dashboard');
+        }
+      }
+    }
+         
     }
 
     static function cartitem(){
@@ -45,6 +62,7 @@ class MainCategoryController extends Controller
     }
 
     function cartlist(){
+      // $articles = Cart::all();
       $userid = Auth::user()->id;
       $advertisements = DB::table('cart')
         ->join('advertisements','cart.product_id','=','advertisements.id')

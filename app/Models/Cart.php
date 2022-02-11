@@ -9,4 +9,10 @@ class Cart extends Model
 {
     use HasFactory;
     public $table = "cart";
+    public $fillable = [
+        'product_id',
+        'user_id',
+        'prod_qty'
+    ];
+
 }

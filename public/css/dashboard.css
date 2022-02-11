@@ -138,3 +138,16 @@
     margin-left: 163px;
     margin-top: -16%;
 }
+#decrement{
+    width: 28%;
+    height: 34px;
+}
+#qtyvalue{
+    width: 28%;
+    height: 34px;
+    border: none;
+}
+#increment{
+    width: 28%;
+    height: 34px;
+}

@@ -4,6 +4,7 @@
 <!-- Meta -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="keywords" content="MediaCenter, Template, eCommerce">
@@ -31,6 +32,8 @@
 <link rel="stylesheet" href="/css/asset/font-awesome.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
 <!-- Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -199,8 +202,8 @@
           </div>
         </div>
             <div style="margin-left:30px" class="row">
-              <div class="row" id="Advertisements">
-              <div class="card-body">
+              <div class="row" id="Advertisements" class="product_data">
+                <div class="card-body">
                     @if(isset($product))
                         @if(count($product)>0)
                             @foreach($product as $ad)
@@ -228,18 +231,26 @@
                                                 @endif
                                             </p>
                                         </div>
+                                        <br>
                                         <div>
-                                        <form action="{{url('/addtocart')}}" method="post">
-                                        {{csrf_field()}}
-                                          <input type="hidden" name="product_id" value={{$ad->id}}>
-                                          <input type="hidden" name="user_id" value={{Auth::user()->id}}>
-                                          <button type="submit" class="btn btn-warning btn-lg" >ADD TO CART</button>
-                                        </form>
+                                          <input id="pro_id" type="hidden" value="{{$ad->id}}" class="prod_id">
+                                          <input type="hidden" class="user_id" name="user_id" value={{Auth::user()->id}}>
+                                          <label for="quantity">Quantity</label>
+                                          <div class="input-group-text-center mb-3" style="width:130px;">
+                                              <button id="decrement" class="input-group-text decrement-btn">-</button>
+                                              <input id="qtyvalue" type="text" name="quantity" class="qty-input firn-control text-center" value="1">
+                                              <button id="increment" class="input-group-text increment-btn">+</button>
+                                          </div>
+                                        </div>
+                                        <br>
+                                        <div>
+                                          
+                                        <button type="button" class="addToCartBtn btn btn-warning btn-lg" >ADD TO CART</button>
                                     
                                     <a href="#"> <button id="buynow" type="button" class="btn btn-success btn-lg">BUY NOW</button></a>                                          
                                     </div>
                                     </div>
-                                    <br><br><br><br>
+                                    <br><br>
                                     <div class="col-lg-6" >
                                         <div class="card border-secondary wb-3" style="max-width:30rem !important;">
                                         <b> <div class="card-header">Book Details</div></b>
@@ -286,7 +297,6 @@
                                                 </div>
                                             </div>
 
-
                                         </div>
                                     </div>
                             @endforeach
@@ -296,7 +306,7 @@
                     @endif
                     </div>
               </div>
-            </div>
+            </div> <br><br>
       </div>
     </div>
    
@@ -310,6 +320,8 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script type="text/javascript">
 
     // $(document).ready(function(){
@@ -333,6 +345,67 @@
             $('.main').attr('src',$(this).attr('src'));
         });
     });
+
+
+
+    $(document).ready(function () {
+
+      $('.addToCartBtn').click(function (e) { 
+        e.preventDefault();
+
+        var product_id = $('.prod_id').val();
+        var product_qty = $('.qty-input').val();
+        var user_id = $('.user_id').val();
+
+        $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          });
+          
+       $.ajax({
+        method: "post",
+         url: "/addtocart",
+         data: {
+           "product_id" : product_id,
+           "product_qty" :product_qty,
+           "user_id" : user_id,
+         },
+         success: function (response) {
+          swal("Successfully Added into Cart","success");
+         }
+       });
+
+      });
+
+
+      $('.increment-btn').click(function (e) { 
+        e.preventDefault();
+        
+        var inc_value = $('.qty-input').val();
+        var value = parseInt(inc_value,10);
+        value = isNaN(value) ? 0 : value;
+        if(value < 10)
+        {
+          value++;
+          $('.qty-input').val(value);
+        }
+      });
+
+      $('.decrement-btn').click(function (e) { 
+        e.preventDefault();
+        
+        var dec_value = $('.qty-input').val();
+        var value = parseInt(dec_value,10);
+        value = isNaN(value) ? 0 : value;
+        if(value > 1)
+        {
+          value--;
+          $('.qty-input').val(value);
+        }
+      });
+    });
+
 
 
 function myFunction() {
