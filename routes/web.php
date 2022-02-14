@@ -74,8 +74,8 @@ Route::get('/removefromcart/{id}',[MainCategorycontroller::class,"removefromcart
 Route::get('/mysellingbooks',[MainCategorycontroller::class,"mysellingbooks"]);
 // remove from the advertisement
 Route::get('/removefromads/{id}',[MainCategorycontroller::class,"removefromads"]);
-
-
+// update cart quntity
+Route::post('/updatecart', [MainCategoryController::class, "updatecart"]);
 require __DIR__.'/auth.php';
 
 

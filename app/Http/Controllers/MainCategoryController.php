@@ -62,15 +62,27 @@ class MainCategoryController extends Controller
     }
 
     function cartlist(){
-      // $articles = Cart::all();
       $userid = Auth::user()->id;
       $advertisements = DB::table('cart')
         ->join('advertisements','cart.product_id','=','advertisements.id')
         ->where('cart.user_id',$userid)
-        ->select('advertisements.*','cart.id as cart_id')
+        ->select('advertisements.*','cart.id as cart_id','cart.prod_qty as prod_qty')
         ->get();
-
+    
         return view('users.cartlist',['advertisements'=>$advertisements]);
+    }
+
+    public function updatecart(Request $request){
+      $prod_id = $request->input('prod_id');
+      $product_qty = $request->input('prod_qty');
+
+      if(Cart::where('product_id',$prod_id)->where('user_id',Auth::user()->id)->exists())
+      {
+        $cart = Cart::where('product_id',$prod_id)->where('user_id',Auth::id())->first();
+        $cart->prod_qty = $product_qty;
+        $cart->update();
+        return response()->json(['status'=>"Quantity Updated"]);
+      }
     }
 
     function removefromcart($id){

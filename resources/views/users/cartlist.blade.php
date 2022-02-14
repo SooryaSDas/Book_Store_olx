@@ -11,6 +11,7 @@
             <div style="margin-left:30px" class="row">
               <div class="row" id="Advertisements">
               <div class="card-body" style="margin-left: 20%;">
+                @php $total=0;  @endphp
                             @foreach($advertisements as $item)
                                 <?php
                                     $img = [];
@@ -50,9 +51,11 @@
                                               <input type="hidden" class="user_id" name="user_id" value={{Auth::user()->id}}>
                                               <label for="quantity">Quantity</label>
                                               <div class="input-group-text-center mb-3" style="width:130px;">
-                                                  <button id="decrement" class="input-group-text decrement-btn">-</button>
-                                                  <input id="qtyvalue" type="text" name="quantity" class="qty-input firn-control text-center" value="1">
-                                                  <button id="increment" class="input-group-text increment-btn">+</button>
+                                                  <button id="decrement" class="input-group-text changeQuantity decrement-btn">-</button>
+                                                 
+                                                  <input id="qtyvalue" type="text" name="quantity" class="qty-input firn-control text-center" value="{{$item->prod_qty}}">
+                                                 
+                                                  <button id="increment" class="input-group-text changeQuantity increment-btn">+</button>
                                               </div>
                                             </div>
                                         <br><br>
@@ -60,8 +63,12 @@
                                         </div>
                                   </div>
                                   <br><br> <br><br>
+                                  @php $total += $item->price * $item->prod_qty ;  @endphp
                             @endforeach
                     </div>
+                    <div style="Margin-left:20%" class="btn btn-danger btn-lg btn-block">
+                      <h4> TOTAL PRICE : {{$total}}</h4>
+                    </div> <br><br>
                     <a href=""> <button style="Margin-left:20%" class="btn btn-success btn-lg btn-block">ORDER NOW</button></a>
                       <br><br><br><br>
               </div>
@@ -113,7 +120,7 @@
           });
           
        $.ajax({
-        method: "post",
+        method: "POST",
          url: "/addtocart",
          data: {
            "product_id" : product_id,
@@ -122,6 +129,7 @@
          },
          success: function (response) {
           swal("Successfully Added into Cart","success");
+          window.location.reload();
          }
        });
 
@@ -157,8 +165,38 @@
           $(this).closest('.product_data').find('.qty-input').val(value);
         }
       });
+
+      $('.changeQuantity').click(function (e) { 
+      e.preventDefault();
+
+      var prod_id = $(this).closest(".product_data").find('.prod_id').val();
+      var qty = $(this).closest(".product_data").find('.qty-input').val();
+      
+      $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          });
+      data = {
+        'prod_id' : prod_id,
+        'prod_qty' : qty,
+      }
+      
+      $.ajax({
+        method: "POST",
+        url: "/updatecart",
+        data: data,
+        success: function (response) {
+          // swal("Success","success");
+          window.location.reload();
+        }
+      });
     });
 
+    });
+
+
+    
 
 
 function myFunction() {
