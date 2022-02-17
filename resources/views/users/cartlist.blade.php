@@ -18,56 +18,64 @@
                                     $img = explode(",", $item->photos);
                                 
                                 ?>
-                                <div class="row" style="padding: 22px; border: 1px solid rgba(0,0,0,.125);">
-                                    <div class="col-lg-6">
+                                <div class="row" style="padding: 12px; border: 1px solid rgba(0,0,0,.125);">
+                                    <div class="col-lg-4">
                                         <div class="row featured" id="featured-image">
-                                            <img class="main" src="{{$img[0]}}" alt="1st image" width="60%"/>
+                                            <img class="main" src="{{$img[0]}}" alt="1st image" width="40%"/>
                                         </div>
                                         
                                         <div>                                 
                                     </div>
                                     </div>
                                     <div class="col-lg-4" >
-                                        <div class="card border-secondary wb-3" style="max-width:30rem !important;">
-                                        <h4><div class="card-header">Book Details</div></h4>
-                                                <div class="card-body" style="padding-top: 20px;">
-                                                    <!-- <b><h5 class="conetent_padding">Name : </b> -->
-                                                    <h2><span title="xtra large">{{$item->bookname}}</span></h2>
-                                                    <!-- </h5>  -->
-                                                    <h5 class="conetent_padding"> Author : 
-                                                        <span title="xtra large">{{$item->authorname}}</span>
-                                                    </h5>
-                                                    <h5 class="conetent_padding"> Language : 
-                                                        <span title="xtra large">{{$item->language}}</span>
-                                                    </h5> 
-                                                    <h5 class="conetent_padding">Book price : 
-                                                        <span title="xtra large"> ₹ {{$item->price}}</span>
-                                                    </h5> 
+                                          <div class="card border-secondary wb-3" style="max-width:40rem !important;">
+                                                    <div class="card-body" style="">
+                                                      <!-- <b><h5 class="conetent_padding">Name : </b> -->
+                                                      <h2><span title="xtra large">{{$item->bookname}}</span></h2>
+                                                      <!-- </h5>  -->
+                                                      <h5 class="conetent_padding"> Author : 
+                                                          <span title="xtra large">{{$item->authorname}}</span>
+                                                      </h5>
+                                                      <h5 class="conetent_padding"> Language : 
+                                                          <span title="xtra large">{{$item->language}}</span>
+                                                      </h5> 
+                                                      <h5 class="conetent_padding">Book price : 
+                                                          <span title="xtra large"> ₹ {{$item->price}}</span>
+                                                      </h5> 
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <br><br> <br>
+                                                <div class="col-lg-2" >
+                                                  <div class="product_data">
+                                                    <input id="pro_id" type="hidden"  class="prod_id" value="{{$item->id}}">
+                                                    <input type="hidden" class="user_id" name="user_id" value={{Auth::user()->id}}>
+                                                    <label for="quantity">Quantity</label>
+                                                    <div class="input-group-text-center mb-3" style="width:130px;">
+                                                      <button id="decrement" class="input-group-text changeQuantity decrement-btn">-</button>
+                                                    
+                                                      <input id="qtyvalue" type="text" name="quantity" class="qty-input firn-control text-center" value="{{$item->prod_qty}}">
+                                                    
+                                                      <button id="increment" class="input-group-text changeQuantity increment-btn">+</button>
+                                                    </div>
+                                                  </div>
+                                                  <br><br>
                                                 </div>
-                                            </div>
-                                            <br><br>
-                                            <div class="product_data">
-                                              <input id="pro_id" type="hidden"  class="prod_id" value="{{$item->id}}">
-                                              <input type="hidden" class="user_id" name="user_id" value={{Auth::user()->id}}>
-                                              <label for="quantity">Quantity</label>
-                                              <div class="input-group-text-center mb-3" style="width:130px;">
-                                                  <button id="decrement" class="input-group-text changeQuantity decrement-btn">-</button>
-                                                 
-                                                  <input id="qtyvalue" type="text" name="quantity" class="qty-input firn-control text-center" value="{{$item->prod_qty}}">
-                                                 
-                                                  <button id="increment" class="input-group-text changeQuantity increment-btn">+</button>
-                                              </div>
-                                            </div>
-                                        <br><br>
-                                           <a href="/removefromcart/{{$item->cart_id}}"> <button class="btn btn-warning">Remove from cart</button></a>
-                                        </div>
+                                               <br>
+                                                <div class="col-lg-2" >
+                                                  <div>
+                                                  <a href="/removefromcart/{{$item->cart_id}}"> <button style="color:black;" class="btn btn-warning fa fa-remove">    Remove from cart</button></a>
+                                                  </div>
+                                                </div>
+                                        
                                   </div>
                                   <br><br> <br><br>
                                   @php $total += $item->price * $item->prod_qty ;  @endphp
                             @endforeach
                     </div>
-                    <div style="Margin-left:20%" class="btn btn-danger btn-lg btn-block">
-                      <h4> TOTAL PRICE : {{$total}}</h4>
+                    <div style="Margin-left:20%" class="btn btn-White btn-lg btn-block">
+                    <h3>Price Details</h3><br>
+                      <h4> TOTAL AMOUNT : {{$total}}</h4>
                     </div> <br><br>
                     <a href=""> <button style="Margin-left:20%" class="btn btn-success btn-lg btn-block">ORDER NOW</button></a>
                       <br><br><br><br>
