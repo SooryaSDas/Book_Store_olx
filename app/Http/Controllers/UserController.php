@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Models\MainCategory;
 use App\Models\SubCategory;
 use App\Models\Advertisement;
+use App\Models\Rating;
 use DB;
 
 class UserController extends Controller
@@ -747,10 +748,18 @@ class UserController extends Controller
 
     public function viewproduct(Request $request, $id){
         $articles = MainCategory::all();
+        $ratings = Rating::where('prod_id',$id)->get();
+        $rating_sum = Rating::where('prod_id',$id)->sum('stars_rated');
+        if($ratings->count()>0){
+            $rating_value = $rating_sum/$ratings->count();
+        }
+        else{
+            $rating_value = 0;
+        }
         $product = DB::table('Advertisements')
                     ->where(['id'=>$id])
                     ->get();
-        return view('users.productview',["articles" =>$articles,"product"=>$product]);
+        return view('users.productview',["articles" =>$articles,"product"=>$product], compact('ratings','rating_value'));
 
     }
    

@@ -228,19 +228,21 @@
                       foreach($ads as $row){
                         $output.= 
                           '<div class="col-md-3" style="width:200px;"> 
-                              <div class="card" style="height:350px !important; width:190px; width: 190px; border: 1px solid rgba(0,0,0,.125);" id="main_divbody">
+                        <div class="card" style="height:350px !important; width:190px; border: 1px solid rgba(0,0,0,.125);" id="main_divbody">
                                 <img class="card-img-top" src='.strtok($row->photos, ',').' style="padding:10px !important; width:100%; height:182px;" alt="image"/>
                                 <div class="card-body"  id="dashboardads"> 
                                   <b><p class="card-text">'.$row->bookname.'</p></b>
                                   <p>'.$row->authorname.'</p>
                                   <p>'. '₹ ' .$row->price.'</p>
                                   <a style="color:white" href=/product/view/'.$row->id.'><button type="button" class="btn btn-success"> VIEW </button></a>
+
                                 </div>
                               </div>
                               <br>
                             </div>
                            ';
                         }
+
                         $output.='';
                         echo $output;
                     }
@@ -249,7 +251,10 @@
                                     
                      }   
                 ?>
+                
+               
               </div>
+              
             </div>
       </div>
     </div>

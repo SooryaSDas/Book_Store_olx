@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MainCategory;
 use App\Models\Advertisement;
 use App\Models\Cart;
+use App\Models\Rating;
 use DB;
 use Session;
 use Auth;
@@ -19,8 +20,22 @@ class MainCategoryController extends Controller
       $articles = MainCategory::all();
       $ads = DB::table('advertisements')->get();
       $output = '';
-      return view("userdashboard",["articles" =>$articles, "ads"=>$ads,"output"=>$output]);
+
+      $advertisements = DB::table('cart')
+        ->join('Rating','cart.product_id','=','Rating.prod_id');
+        $ratings = Rating::where('prod_id','Rating.prod_id')->get();
+        $rating_sum = Rating::where('prod_id','Rating.prod_id')->sum('stars_rated');
+        if($ratings->count()>0){
+            $rating_value = $rating_sum/$ratings->count();
+        }
+        else{
+            $rating_value = 0;
+        } 
+
+      return view("userdashboard",["articles" =>$articles, "ads"=>$ads,"output"=>$output],compact('ratings','rating_value'));
     }
+     
+  
 
     public function home()
     {
@@ -105,4 +120,25 @@ class MainCategoryController extends Controller
       Advertisement::destroy($id);
       return redirect('/mysellingbooks');
     }
+
+    public function addrating(Request $request)
+    {
+          $stars_rated = $request->input('product_rating');
+          $product_id = $request->input('product_id');
+
+        $existing_rating = Rating::where('user_id',Auth::id())->where('prod_id', $product_id)->first();
+          if($existing_rating)
+          {
+            $existing_rating->stars_rated = $stars_rated;
+            $existing_rating->update();
+          }
+          else{
+            Rating::create([
+              'user_id' => Auth::id(),
+              'prod_id'=> $product_id,
+              'stars_rated' =>$stars_rated
+            ]);
+          } 
+          return redirect()->back()->with('success',"Thank you for Rating this product"); 
+     }
 }

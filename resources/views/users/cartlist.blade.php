@@ -36,9 +36,7 @@
                                                       <h5 class="conetent_padding"> Author : 
                                                           <span title="xtra large">{{$item->authorname}}</span>
                                                       </h5>
-                                                      <h5 class="conetent_padding"> Language : 
-                                                          <span title="xtra large">{{$item->language}}</span>
-                                                      </h5> 
+                                                     
                                                       <h5 class="conetent_padding">Book price : 
                                                           <span title="xtra large"> ₹ {{$item->price}}</span>
                                                       </h5> 
@@ -64,12 +62,12 @@
                                                <br>
                                                 <div class="col-lg-2" >
                                                   <div>
-                                                  <a href="/removefromcart/{{$item->cart_id}}"> <button style="color:black;" class="btn btn-warning fa fa-remove">    Remove from cart</button></a>
+                                                  <a href="/removefromcart/{{$item->cart_id}}"> <button style="color:white;" class="btn btn-danger fa fa-remove">     Remove from cart</button></a>
                                                   </div>
                                                 </div>
                                         
                                   </div>
-                                  <br><br> <br><br>
+                                  <br><br>
                                   @php $total += $item->price * $item->prod_qty ;  @endphp
                             @endforeach
                     </div>
